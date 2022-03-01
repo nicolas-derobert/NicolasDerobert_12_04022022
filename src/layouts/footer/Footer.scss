@@ -1,0 +1,15 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.footer {
+	color: $white-color;
+    background-color: $black-color;
+    display: flex;
+    flex-flow: column wrap  ;
+    justify-content: space-around;
+    align-items: center;
+    .footer-logo{
+        padding-top: 40px;
+    }
+	
+}

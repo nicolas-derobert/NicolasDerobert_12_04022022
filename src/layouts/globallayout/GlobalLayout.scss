@@ -1,0 +1,89 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.globallayout {
+	// margin: 5% 10%;
+	// width: 80%;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	// @include large-max-generic {
+	// 	width: 1200px;
+	// 	margin: 10px auto;
+	// }
+	// @include small-generic {
+	// 	width: 95%;
+	// 	margin: 10px 2.5%;
+	// }
+	// @include mobile-generic {
+	// 	width: 95%;
+	// 	margin: 10px 2.5%;
+	// }
+
+	main {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
+		// align-content: flex-start;
+		align-items: flex-start;
+		width: 100%;
+		aside {
+			flex: 0 0 120px;
+			display: flex;
+			flex-flow: column nowrap;
+			align-items: center;
+			justify-content: space-around;
+			align-content: center;
+			padding: 0 4px;
+			background-color: $black-color;
+			.copyright {
+				// grid-area: naturearea;
+				// background-color: $color-dark;
+				width: 100%;
+				height: 100%;
+				writing-mode: vertical-rl;
+				text-orientation: sideways;
+				transform: rotate(180deg);
+				text-align: center;
+				padding: 2px;
+				// color: $color-white;
+				font-size: 2rem;
+			}
+		}
+		.content {
+			.horzontalmainarea {
+				grid-area: horzontalmainarea;
+			}
+			.horizontalsecondaryarea{
+				grid-area: horizontalsecondaryarea;
+			}
+			.verticalarea{
+				grid-area: verticalarea;
+			}
+			.titlearea{
+				grid-area: titlearea;
+				color: $black-color;
+			}
+			.congratsarea{
+				grid-area: congratsarea;
+			}
+
+			margin-left: 14px;
+			flex: 0 0 90%;
+			display: grid;
+			gap:14px ;
+			// height: 1;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+			grid-template-areas:
+			"titlearea titlearea titlearea titlearea"
+			"congratsarea congratsarea congratsarea congratsarea"
+
+			"horzontalmainarea horzontalmainarea horzontalmainarea verticalarea"
+				"horzontalmainarea horzontalmainarea horzontalmainarea verticalarea"
+				"horizontalsecondaryarea horizontalsecondaryarea horizontalsecondaryarea verticalarea";
+		}
+	}
+}

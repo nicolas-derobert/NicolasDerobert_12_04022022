@@ -1,0 +1,33 @@
+@mixin large-max-generic {
+	@media (min-width: $breakpoint-large-max) {
+		@content;
+	}
+}
+@mixin large-generic {
+	@media (min-width: $breakpoint-large-min)  and (max-width: $breakpoint-large-max){
+		@content;
+	}
+}
+
+@mixin desktop-generic {
+	@media (min-width: $breakpoint-desktop-min) and (max-width: $breakpoint-desktop-max) {
+		@content;
+	}
+}
+//Tablet
+@mixin tablet-generic {
+	@media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
+		@content;
+	}
+}
+@mixin small-generic {
+	@media (min-width: $breakpoint-small-device-min) and (max-width: $breakpoint-small-device-max) {
+		@content;
+	}
+}
+//mobile
+@mixin mobile-generic {
+	@media screen and (max-width: $breakpoint-mobile-max) {
+		@content;
+	}
+}

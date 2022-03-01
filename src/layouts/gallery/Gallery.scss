@@ -1,0 +1,40 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.gallery {
+	background-color: $fourthly-color;
+	width: 90%;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 30px;
+	padding: 5%;
+	margin-top: 40px;
+
+	@include large-generic {
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+	}
+	@include desktop-generic {
+		grid-template-columns: 1fr 1fr;
+	}
+	@include tablet-generic {
+		grid-template-columns: 1fr;
+	}
+	@include small-generic {
+		background-color: $white-color;
+		grid-template-columns: 1fr;
+		padding: 0;
+		gap: 10px;
+	}
+	@include mobile-generic {
+		background-color: $white-color;
+		grid-template-columns: 1fr;
+		padding: 0;
+		gap: 10px;
+	}
+	a {
+		display: flex;
+		justify-content: center;
+	}
+}

@@ -1,0 +1,16 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+.squarechartarea {
+	// .iconarea {
+	// 	background-color: $sixthly-color 10%;
+	// }
+	width: 30%;
+	// height: 280px;
+	border-radius: 4px;
+
+	background-color: $primary-color;
+
+	.recharts-line{
+		color: $white-color;
+	}
+}

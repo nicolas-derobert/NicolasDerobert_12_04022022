@@ -1,0 +1,48 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.horizontalnavbar {
+	flex: 0 0 70%;
+	font-size: 3rem;
+	margin: 10px;
+	text-transform: uppercase;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	ul {
+		padding: 0;
+		width: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+	}
+	li {
+		padding: 0px 20px;
+		list-style-type: none;
+		white-space: nowrap;
+		a {
+			color: $primary-color;
+			text-decoration: none;
+			&.active {
+				text-decoration: underline;
+			}
+		}
+	}
+	@include small-generic {
+		flex-grow: 3;
+		margin: 0px;
+		font-size: 1.5rem;
+		li {
+			padding: 5px;
+		}
+	}
+	@include mobile-generic {
+		flex-grow: 3;
+		margin: 0px;
+		font-size: 1.5rem;
+		li {
+			padding: 5px;
+		}
+	}
+}

@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,eAAe,CAAC;EASd,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,aAAa;EACxB,eAAe,EAAE,YAAY;EAC7B,WAAW,EAAC,MAAM;EAClB,MAAM,EAAE,GAAG;CA8BZ",
+    "sources": [
+        "VerticalNavbar.scss",
+        "../../assets/Styles/variables.scss",
+        "../../assets/Styles/mixin.scss"
+    ],
+    "names": [],
+    "file": "VerticalNavbar.css"
+}

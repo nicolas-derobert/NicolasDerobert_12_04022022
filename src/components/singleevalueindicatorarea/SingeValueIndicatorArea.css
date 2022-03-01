@@ -1,0 +1,27 @@
+.singlevalueindicatorarea {
+  height: 120px;
+  width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+  border-radius: 4px;
+  background-color: #FBFBFB;
+}
+
+.singlevalueindicatorarea .iconarea {
+  height: 32px;
+  width: 32px;
+  background-color: #FD5181 10%;
+}
+/*# sourceMappingURL=SingeValueIndicatorArea.css.map */

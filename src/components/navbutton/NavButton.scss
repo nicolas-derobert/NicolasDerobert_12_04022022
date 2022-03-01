@@ -1,0 +1,18 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.navbutton {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	height: 64px;
+	width: 64px;
+	background-color: $white-color;
+	border-radius: 6px;
+    margin: 10px;
+	div {
+		height: auto;
+		width: auto;
+	}
+}

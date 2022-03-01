@@ -1,0 +1,10 @@
+.squarechartarea {
+  width: 30%;
+  border-radius: 4px;
+  background-color: #FF0101;
+}
+
+.squarechartarea .recharts-line {
+  color: #ffffff;
+}
+/*# sourceMappingURL=SquareChartArea.css.map */

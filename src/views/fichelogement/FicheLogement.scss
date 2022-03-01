@@ -1,0 +1,124 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+.caroussel-area {
+	width: 100%;
+	height: 400px;
+	margin: 0;
+	@include small-generic {
+		width: 100%;
+		height: 255px;
+		margin: 0px;
+
+	}
+	@include mobile-generic {
+		width: 100%;
+		height: 255px;
+		margin: 0px;
+	}
+}
+.fichelogement {
+	h1{
+		line-height: 6rem;
+	@include small-generic {
+		margin: 0;
+	}
+	@include mobile-generic {
+		margin: 0;
+	}
+}
+	.title {
+		grid-area: title;
+		.location {
+			font-size: 2.25rem;
+		}
+	}
+	.host {
+		grid-area: host;
+		justify-self: end;
+	}
+	.tags {
+		grid-area: tags;
+		display: flex;
+		flex-flow: row wrap;
+		gap: 10px;
+		justify-self: start;
+	}
+	.rating {
+		grid-area: rating;
+		justify-self: end;
+		@include small-generic {
+			justify-self: start;
+		}
+		@include mobile-generic {
+			justify-self: start;
+		}
+	}
+	.description {
+		align-self: start;
+		grid-area: description;
+		width: 100%;
+		justify-self: start;
+		margin-right: 10px;
+		@include small-generic {
+			margin: 0;
+		}
+		@include mobile-generic {
+			margin: 0;
+		}
+	}
+	.equipement {
+		align-self: start;
+
+		grid-area: equipement;
+		width: 100%;
+		justify-self: start;
+
+		margin-left: 20px;
+		@include small-generic {
+			margin: 0;
+		}
+		@include mobile-generic {
+			margin: 0;
+		}
+		li {
+			list-style-type: none;
+		}
+	}
+	color: $primary-color;
+	margin: 10px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto 30px 1fr;
+	grid-row-gap: 20px;
+	grid-template-areas:
+		"title title title host"
+		"tags tags tags rating"
+		"description description equipement equipement";
+	justify-items: start;
+	align-items: center;
+	@include small-generic {
+		grid-template-rows: auto 30px 30px 1fr 1fr;
+		grid-template-areas:
+			"title title title title"
+			"tags tags tags tags"
+			"rating rating host host"
+			"description description description description"
+			"equipement equipement equipement equipement";
+	}
+	@include mobile-generic {
+		grid-template-rows: auto 30px 30px 1fr 1fr;
+		grid-template-areas:
+			"title title title title"
+			"tags tags tags tags"
+			"rating rating host host"
+			"description description description description"
+			"equipement equipement equipement equipement";
+	}
+
+	h1 {
+		color: $primary-color;
+		font-size: 4.5rem;
+		font-weight: 500;
+	}
+}

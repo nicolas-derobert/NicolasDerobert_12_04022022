@@ -1,0 +1,84 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+.horzontalmainarea {
+	display: flex;
+	flex-direction: column;
+    background-color: $secondary-color;
+	border-radius: 4px;
+
+	//   }
+	ul {
+        position: relative;
+        top:-20px;
+        width: 50%;
+        left: 50%;
+		display: flex;
+		flex-flow: row nowrap;
+		align-content: center;
+		justify-content: space-around;
+		list-style: none;
+
+		li {
+			color: $seventhly-color;
+			margin: 10px;
+            font-size: 1.4rem;
+			&::before {
+				position: relative;
+                content: "•";
+				display: inline-block;
+				width: 1em;
+				left: 0.3em;
+                top: 0.7rem;
+                font-size: 2.5em;
+                line-height: 2.5rem;
+
+			}
+
+			&#poids {
+				&::before {
+					content: "•";
+					color: $black-color;
+				}
+			}
+			&#calorie {
+				&::before {
+					content: "•";
+					color: $primary-color;
+				}
+			}
+		}
+	}
+
+	h3 {
+		margin-left: 20px;
+		margin-right: auto;
+	}
+	.custom-tooltip {
+		background-color: $primary-color;
+		color: $white-color;
+		padding: 7px;
+		p {
+			padding: 5px;
+			// color: $seventhly-color;
+			// font-size: 20px;
+		}
+		// .container {
+	}
+	// BarChart {
+	// Bar {
+	// 	fill: $fourthly-color;
+	// }
+	// Bar[dataKey="pv"] {
+	// 	fill: $primary-color;
+	// }
+	// #pv{
+	// 	fill: $primary-color;
+	// }
+	// }
+	//     <Bar dataKey="pv" fill="#8884d8" minPointSize={5}>
+	//     <LabelList dataKey="name" content={renderCustomizedLabel} />
+	// </Bar>
+	// <Bar dataKey="uv" fill="#82ca9d" minPointSize={10} />
+	// </BarChart>
+	// background-color: bisque;
+}

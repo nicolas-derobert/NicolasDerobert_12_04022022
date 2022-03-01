@@ -1,0 +1,22 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.singlevalueindicatorarea {
+    height: 120px;
+    width: 250px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border-radius: 4px;
+	.iconarea {
+        height: 32px;
+        width: 32px;
+		background-color: $sixthly-color 10%;
+	}
+    .dataarea{
+        
+    }
+	background-color: $secondary-color;
+}

@@ -1,0 +1,16 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+.horizontalsecondaryarea{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: stretch;
+    background-color: $secondary-color;
+	border-radius: 4px;
+	// height: 280px;
+
+	h3 {
+		margin-left: 20px;
+		margin-right: auto;
+	}
+}

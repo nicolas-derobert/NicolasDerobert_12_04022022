@@ -1,0 +1,47 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.verticalnavbar {
+	
+	// font-size: 3rem;
+	// flex: 3;
+	// margin: 10px;
+	// text-transform: uppercase;
+	// align-self: flex-end;
+	// ul {
+	// 	padding: 0;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-around;
+		align-items:center;
+		height: 70%;
+	// }
+	// li {
+	// 	padding: 0px 20px;
+	// 	list-style-type: none;
+	// 	white-space: nowrap;
+	// 	a {
+	// 		color: $primary-color;
+	// 		text-decoration: none;
+	// 		&.active {
+	// 			text-decoration: underline;
+	// 		}
+	// 	}
+	// }
+	// @include small-generic {
+	// 	flex-grow: 3;
+	// 	margin: 0px;
+	// 	font-size: 1.5rem;
+	// 	li {
+	// 		padding: 5px;
+	// 	}
+	// }
+	// @include mobile-generic {
+	// 	flex-grow: 3;
+	// 	margin: 0px;
+	// 	font-size: 1.5rem;
+	// 	li {
+	// 		padding: 5px;
+	// 	}
+	// }
+}

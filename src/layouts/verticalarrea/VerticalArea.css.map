@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,aAAa,CAAA;EACT,gBAAgB,EAAE,IAAI;CACzB",
+    "sources": [
+        "VerticalArea.scss",
+        "../../assets/Styles/variables.scss",
+        "../../assets/Styles/mixin.scss"
+    ],
+    "names": [],
+    "file": "VerticalArea.css"
+}

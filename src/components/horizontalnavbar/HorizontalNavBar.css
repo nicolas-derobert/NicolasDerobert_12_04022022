@@ -1,0 +1,76 @@
+.horizontalnavbar {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 70%;
+          flex: 0 0 70%;
+  font-size: 3rem;
+  margin: 10px;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.horizontalnavbar ul {
+  padding: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.horizontalnavbar li {
+  padding: 0px 20px;
+  list-style-type: none;
+  white-space: nowrap;
+}
+
+.horizontalnavbar li a {
+  color: #FF0101;
+  text-decoration: none;
+}
+
+.horizontalnavbar li a.active {
+  text-decoration: underline;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .horizontalnavbar {
+    -webkit-box-flex: 3;
+        -ms-flex-positive: 3;
+            flex-grow: 3;
+    margin: 0px;
+    font-size: 1.5rem;
+  }
+  .horizontalnavbar li {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .horizontalnavbar {
+    -webkit-box-flex: 3;
+        -ms-flex-positive: 3;
+            flex-grow: 3;
+    margin: 0px;
+    font-size: 1.5rem;
+  }
+  .horizontalnavbar li {
+    padding: 5px;
+  }
+}
+/*# sourceMappingURL=HorizontalNavBar.css.map */

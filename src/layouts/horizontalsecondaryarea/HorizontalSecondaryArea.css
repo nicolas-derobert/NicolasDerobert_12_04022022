@@ -2,22 +2,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  background-color: #FBFBFB;
   border-radius: 4px;
-}
-
-.horizontalsecondaryarea h3 {
-  margin-left: 20px;
-  margin-right: auto;
+  gap: 30px;
 }
 /*# sourceMappingURL=HorizontalSecondaryArea.css.map */

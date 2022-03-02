@@ -1,16 +1,46 @@
 @import "../../assets/Styles/variables.scss";
 @import "../../assets/Styles/mixin.scss";
 .squarechartarea {
-	// .iconarea {
-	// 	background-color: $sixthly-color 10%;
-	// }
-	width: 30%;
-	// height: 280px;
+	width: 260px;
+	height: 260px;
 	border-radius: 4px;
+	position: relative;
+	.white-circle {	
+		background-color: $fourthly-color !important;
+		border-radius: 100%;
+		width: 140px;
+		height: 140px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.recharts-sector {
+		// stroke-linejoin: round;
+		// stroke-width: 7px;
+		border-radius: 50%;
+	  }
+	&.line {
+		background-color: $primary-color;
+		h3 {
+			// position: absolute;
+			width: 60%;
+			margin: 10px 20px;
+			margin-right: auto;
+		}
+	}
+	&.radar {
+		background-color: $heighthly-color;
+	}
+	&.pie {
+		background-color: $secondary-color;
+	}
 
-	background-color: $primary-color;
-
-	.recharts-line{
+	&.recharts-line {
 		color: $white-color;
+	}
+	.recharts-layer {
+		color: $white-color !important;
+		background-color: $white-color !important;
 	}
 }

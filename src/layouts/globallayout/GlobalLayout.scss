@@ -2,26 +2,11 @@
 @import "../../assets/Styles/mixin.scss";
 
 .globallayout {
-	// margin: 5% 10%;
-	// width: 80%;
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
 	justify-content: center;
 	align-content: center;
-	// @include large-max-generic {
-	// 	width: 1200px;
-	// 	margin: 10px auto;
-	// }
-	// @include small-generic {
-	// 	width: 95%;
-	// 	margin: 10px 2.5%;
-	// }
-	// @include mobile-generic {
-	// 	width: 95%;
-	// 	margin: 10px 2.5%;
-	// }
-
 	main {
 		display: flex;
 		flex-flow: row nowrap;
@@ -39,8 +24,7 @@
 			padding: 0 4px;
 			background-color: $black-color;
 			.copyright {
-				// grid-area: naturearea;
-				// background-color: $color-dark;
+
 				width: 100%;
 				height: 100%;
 				writing-mode: vertical-rl;
@@ -48,41 +32,39 @@
 				transform: rotate(180deg);
 				text-align: center;
 				padding: 2px;
-				// color: $color-white;
 				font-size: 2rem;
 			}
 		}
 		.content {
-			.horzontalmainarea {
-				grid-area: horzontalmainarea;
+			.horizontalmainarea {
+				grid-area: horizontalmainarea;
 			}
-			.horizontalsecondaryarea{
+			.horizontalsecondaryarea {
 				grid-area: horizontalsecondaryarea;
 			}
-			.verticalarea{
+			.verticalarea {
 				grid-area: verticalarea;
 			}
-			.titlearea{
+			.titlearea {
 				grid-area: titlearea;
 				color: $black-color;
 			}
-			.congratsarea{
+			.congratsarea {
 				grid-area: congratsarea;
 			}
 
 			margin-left: 14px;
 			flex: 0 0 90%;
 			display: grid;
-			gap:14px ;
+			gap: 30px;
 			// height: 1;
 			grid-template-columns: 2fr 1fr 1fr 1fr;
-			grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+			grid-template-rows: repeat(4, 180px) 260px;
 			grid-template-areas:
-			"titlearea titlearea titlearea titlearea"
-			"congratsarea congratsarea congratsarea congratsarea"
-
-			"horzontalmainarea horzontalmainarea horzontalmainarea verticalarea"
-				"horzontalmainarea horzontalmainarea horzontalmainarea verticalarea"
+				"titlearea titlearea titlearea titlearea"
+				"congratsarea congratsarea congratsarea congratsarea"
+				"horizontalmainarea horizontalmainarea horizontalmainarea verticalarea"
+				"horizontalmainarea horizontalmainarea horizontalmainarea verticalarea"
 				"horizontalsecondaryarea horizontalsecondaryarea horizontalsecondaryarea verticalarea";
 		}
 	}

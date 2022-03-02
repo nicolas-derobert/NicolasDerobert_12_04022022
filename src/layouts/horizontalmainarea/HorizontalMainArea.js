@@ -3,7 +3,7 @@ import "./HorizontalMainArea.css";
 
 function HorizontalMainArea(props) {
   return (
-    <div className='horzontalmainarea'>{props.children}</div>
+    <div className='horizontalmainarea'>{props.children}</div>
   )
 }
 

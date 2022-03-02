@@ -76,20 +76,20 @@
           flex: 0 0 90%;
   display: -ms-grid;
   display: grid;
-  gap: 14px;
+  gap: 30px;
   -ms-grid-columns: 2fr 1fr 1fr 1fr;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-      grid-template-areas: "titlearea titlearea titlearea titlearea" "congratsarea congratsarea congratsarea congratsarea"  "horzontalmainarea horzontalmainarea horzontalmainarea verticalarea" "horzontalmainarea horzontalmainarea horzontalmainarea verticalarea" "horizontalsecondaryarea horizontalsecondaryarea horizontalsecondaryarea verticalarea";
+  -ms-grid-rows: (180px)[4] 260px;
+      grid-template-rows: repeat(4, 180px) 260px;
+      grid-template-areas: "titlearea titlearea titlearea titlearea" "congratsarea congratsarea congratsarea congratsarea" "horizontalmainarea horizontalmainarea horizontalmainarea verticalarea" "horizontalmainarea horizontalmainarea horizontalmainarea verticalarea" "horizontalsecondaryarea horizontalsecondaryarea horizontalsecondaryarea verticalarea";
 }
 
-.globallayout main .content .horzontalmainarea {
+.globallayout main .content .horizontalmainarea {
   -ms-grid-row: 3;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
-  grid-area: horzontalmainarea;
+  grid-area: horizontalmainarea;
 }
 
 .globallayout main .content .horizontalsecondaryarea {

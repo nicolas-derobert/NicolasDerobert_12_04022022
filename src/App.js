@@ -16,6 +16,7 @@ import {
 	CartesianGrid,
 	Tooltip,
 	Legend,
+	Label,
 	LabelList,
 	ResponsiveContainer,
 } from "recharts";
@@ -100,6 +101,16 @@ function App() {
 			</ul>
 		);
 	};
+	const renderLabel = (props) => {
+		const { payload } = props;
+
+		return (
+			<ul>
+				<li id="poids">{payload[0].value}</li>
+				<li id="calorie">{payload[1].value}</li>
+			</ul>
+		);
+	};
 
 	return (
 		<div className="App">
@@ -120,10 +131,15 @@ function App() {
 								bottom: 5,
 							}}
 							barSize={7}
+							fill="#FF0101"
 						>
 							<CartesianGrid strokeDasharray="3 3" />
-							<XAxis dataKey="name" />
-							<YAxis />
+							<XAxis
+								dataKey="name"
+								style={{
+									fill: "#9B9EAC",
+								}}
+							></XAxis>
 							<Tooltip content={<CustomTooltip />} />{" "}
 							<Legend
 								verticalAlign="top"
@@ -139,8 +155,7 @@ function App() {
 								fill="#000000"
 								minPointSize={5}
 								radius={[3, 3, 0, 0]}
-							>
-							</Bar>
+							></Bar>
 							<Bar
 								name="Calories brûlées (KCal)"
 								dataKey="Calories"

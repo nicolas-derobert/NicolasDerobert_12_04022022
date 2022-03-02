@@ -1,10 +1,50 @@
 .squarechartarea {
-  width: 30%;
+  width: 260px;
+  height: 260px;
   border-radius: 4px;
+  position: relative;
+}
+
+.squarechartarea .white-circle {
+  background-color: #feffff !important;
+  border-radius: 100%;
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.squarechartarea .recharts-sector {
+  border-radius: 50%;
+}
+
+.squarechartarea.line {
   background-color: #FF0101;
 }
 
-.squarechartarea .recharts-line {
+.squarechartarea.line h3 {
+  width: 60%;
+  margin: 10px 20px;
+  margin-right: auto;
+}
+
+.squarechartarea.radar {
+  background-color: #282D30;
+}
+
+.squarechartarea.pie {
+  background-color: #FBFBFB;
+}
+
+.squarechartarea.recharts-line {
   color: #ffffff;
+}
+
+.squarechartarea .recharts-layer {
+  color: #ffffff !important;
+  background-color: #ffffff !important;
 }
 /*# sourceMappingURL=SquareChartArea.css.map */

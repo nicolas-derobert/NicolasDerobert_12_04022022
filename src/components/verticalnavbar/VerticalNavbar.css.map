@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAGA,AAAA,eAAe,CAAC;EASd,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,aAAa;EACxB,eAAe,EAAE,YAAY;EAC7B,WAAW,EAAC,MAAM;EAClB,MAAM,EAAE,GAAG;CA8BZ",
+    "mappings": "AAGA,AAAA,eAAe,CAAC;EACd,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,aAAa;EACxB,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAC,MAAM;CAEnB",
     "sources": [
         "VerticalNavbar.scss",
         "../../assets/Styles/variables.scss",

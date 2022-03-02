@@ -1,17 +1,23 @@
 @import "../../assets/Styles/variables.scss";
 @import "../../assets/Styles/mixin.scss";
-.horzontalmainarea {
+.horizontalmainarea {
+	// .recharts-text {
+	// 	tspan {
+	// 		color: "9B9EAC" !important;
+	// 		fill: "9B9EAC" !important;
+	// 	}
+	// }
 	display: flex;
 	flex-direction: column;
-    background-color: $secondary-color;
+	background-color: $secondary-color;
 	border-radius: 4px;
 
 	//   }
 	ul {
-        position: relative;
-        top:-20px;
-        width: 50%;
-        left: 50%;
+		position: relative;
+		top: -20px;
+		width: 50%;
+		left: 50%;
 		display: flex;
 		flex-flow: row nowrap;
 		align-content: center;
@@ -21,17 +27,16 @@
 		li {
 			color: $seventhly-color;
 			margin: 10px;
-            font-size: 1.4rem;
+			font-size: 1.4rem;
 			&::before {
 				position: relative;
-                content: "•";
+				content: "•";
 				display: inline-block;
 				width: 1em;
 				left: 0.3em;
-                top: 0.7rem;
-                font-size: 2.5em;
-                line-height: 2.5rem;
-
+				top: 0.7rem;
+				font-size: 2.5em;
+				line-height: 2.5rem;
 			}
 
 			&#poids {

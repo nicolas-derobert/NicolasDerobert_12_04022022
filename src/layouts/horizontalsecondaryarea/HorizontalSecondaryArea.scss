@@ -2,15 +2,12 @@
 @import "../../assets/Styles/mixin.scss";
 .horizontalsecondaryarea{
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: stretch;
-    background-color: $secondary-color;
+    // background-color: $secondary-color;
 	border-radius: 4px;
+	gap:30px;
 	// height: 280px;
 
-	h3 {
-		margin-left: 20px;
-		margin-right: auto;
-	}
 }

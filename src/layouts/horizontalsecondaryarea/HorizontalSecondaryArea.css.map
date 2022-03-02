@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,wBAAwB,CAAA;EACvB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,OAAO;EACjB,gBAAgB,ECLF,OAAO;EDMxB,aAAa,EAAE,GAAG;CAOlB;;AAbD,AASC,wBATuB,CASvB,EAAE,CAAC;EACF,WAAW,EAAE,IAAI;EACjB,YAAY,EAAE,IAAI;CAClB",
+    "mappings": "AAEA,AAAA,wBAAwB,CAAA;EACvB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,OAAO;EAEpB,aAAa,EAAE,GAAG;EAClB,GAAG,EAAC,IAAI;CAGR",
     "sources": [
         "HorizontalSecondaryArea.scss",
         "../../assets/Styles/variables.scss",

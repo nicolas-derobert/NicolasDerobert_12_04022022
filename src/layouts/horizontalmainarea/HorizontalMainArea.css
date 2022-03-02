@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.horzontalmainarea {
+.horizontalmainarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,7 +11,7 @@
   border-radius: 4px;
 }
 
-.horzontalmainarea ul {
+.horizontalmainarea ul {
   position: relative;
   top: -20px;
   width: 50%;
@@ -30,13 +30,13 @@
   list-style: none;
 }
 
-.horzontalmainarea ul li {
+.horizontalmainarea ul li {
   color: #74798C;
   margin: 10px;
   font-size: 1.4rem;
 }
 
-.horzontalmainarea ul li::before {
+.horizontalmainarea ul li::before {
   position: relative;
   content: "•";
   display: inline-block;
@@ -47,28 +47,28 @@
   line-height: 2.5rem;
 }
 
-.horzontalmainarea ul li#poids::before {
+.horizontalmainarea ul li#poids::before {
   content: "•";
   color: #000000;
 }
 
-.horzontalmainarea ul li#calorie::before {
+.horizontalmainarea ul li#calorie::before {
   content: "•";
   color: #FF0101;
 }
 
-.horzontalmainarea h3 {
+.horizontalmainarea h3 {
   margin-left: 20px;
   margin-right: auto;
 }
 
-.horzontalmainarea .custom-tooltip {
+.horizontalmainarea .custom-tooltip {
   background-color: #FF0101;
   color: #ffffff;
   padding: 7px;
 }
 
-.horzontalmainarea .custom-tooltip p {
+.horizontalmainarea .custom-tooltip p {
   padding: 5px;
 }
 /*# sourceMappingURL=HorizontalMainArea.css.map */

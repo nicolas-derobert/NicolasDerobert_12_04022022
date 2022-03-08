@@ -6,6 +6,8 @@ header {
 	// margin: 30px 10%;
 	// padding-left: 30px;
 	width: 100%;
+	height: 10vh;
+
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-around;
@@ -25,7 +27,7 @@ header {
 	// 	margin: 5%;
 	// }
 	.header-logo {
-		flex: 0 0 30%;
+		flex: 0 0 20%;
 		width: 100%;
 		display: flex;
 		flex-flow: row nowrap;

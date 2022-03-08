@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,aAAa,CAAA;EACT,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,aAAa;EACxB,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAC,MAAM;CACrB",
+    "mappings": "AAEA,AAAA,aAAa,CAAA;EACT,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,aAAa;EACxB,eAAe,EAAE,aAAa;CACjC",
     "sources": [
         "VerticalArea.scss",
         "../../assets/Styles/variables.scss",

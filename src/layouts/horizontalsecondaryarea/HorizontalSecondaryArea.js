@@ -22,66 +22,66 @@ import {
 	RadarChart,
 } from "recharts";
 
-function HorizontalSecondaryArea() {
+function HorizontalSecondaryArea(props) {
 	const datadureesession = [
 		{
-			name: "L",
+			day: "L",
 			duree: 10,
 		},
 		{
-			name: "M",
+			day: "M",
 			duree: 5,
 		},
 		{
-			name: "M",
+			day: "M",
 			duree: 68,
 		},
 		{
-			name: "J",
+			day: "J",
 			duree: 18,
 		},
 		{
-			name: "V",
+			day: "V",
 			duree: 68,
 		},
 		{
-			name: "S",
+			day: "S",
 			duree: 68,
 		},
 		{
-			name: "D",
+			day: "D",
 			duree: 68,
 		},
 	];
 	const dataradar = [
 		{
-			subject: "Intensité",
-			A: 120,
+			type: "Intensité",
+			value: 120,
 			fullMark: 150,
 		},
 		{
-			subject: "Vitesse",
-			A: 98,
+			type: "Vitesse",
+			value: 98,
 			fullMark: 150,
 		},
 		{
-			subject: "Force",
-			A: 86,
+			type: "Force",
+			value: 86,
 			fullMark: 150,
 		},
 		{
-			subject: "Endurance",
-			A: 99,
+			type: "Endurance",
+			value: 99,
 			fullMark: 150,
 		},
 		{
-			subject: "Energie",
-			A: 85,
+			type: "Energie",
+			value: 85,
 			fullMark: 150,
 		},
 		{
-			subject: "Cardio",
-			A: 65,
+			type: "Cardio",
+			value: 65,
 			fullMark: 150,
 		},
 	];
@@ -104,8 +104,8 @@ function HorizontalSecondaryArea() {
 	// 	{ name: "Group F", value: 4800 },
 	// ];
 	const data = [
-		{ name: "Group A", value: 15 },
-		{ name: "Group B", value: 85 },
+		{  value: 15 },
+		{  value: 85 },
 	];
 	const COLORS = ["#FF0101", "#FBFBFB", "#FFBB28", "#FF8042"];
 
@@ -114,9 +114,9 @@ function HorizontalSecondaryArea() {
 			<SquareChartArea>
 				<div className="squarechartarea line">
 					<h3>Durée moyenne des sessions</h3>					
-					<ResponsiveContainer height={180} width="100%">
+					<ResponsiveContainer height="80%" width="100%">
 						<LineChart
-							data={datadureesession}
+							data={props.sessions}
 							margin={{
 								top: 5,
 								right: 30,
@@ -126,7 +126,7 @@ function HorizontalSecondaryArea() {
 						>
 							{/* <CartesianGrid strokeDasharray="3 3" /> */}
 							<XAxis
-								dataKey="name"
+								dataKey="day"
 								axisLine={false}
 								tickLine={false}
 								stroke="#ffffff"
@@ -136,7 +136,7 @@ function HorizontalSecondaryArea() {
 							{/* <Legend /> */}
 							<Line
 								type="monotone"
-								dataKey="duree"
+								dataKey="sessionLength"
 								stroke="#ffffff"
 								strokeWidth={1}
 							/>
@@ -147,18 +147,16 @@ function HorizontalSecondaryArea() {
 			<SquareChartArea>
 				<div className="squarechartarea radar">
 					<ResponsiveContainer width="100%" height="100%">
-						<RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataradar}>
+						<RadarChart cx="50%" cy="50%" outerRadius="80%" data={props.performance}>
 							<PolarGrid />
 							<PolarAngleAxis
-								dataKey="subject"
+								dataKey="type"
 								tick={{ fill: "#FFFFFF" }}
-								// style={{
-								// 		fill: "#FF0101",								}}
 							/>
 							<PolarRadiusAxis angle={30} domain={[0, 150]} />
 							<Radar
-								name="Mike"
-								dataKey="A"
+								name=""
+								dataKey="value"
 								stroke="#FF0101"
 								fill="#FF0101"
 								fillOpacity={0.6}
@@ -167,57 +165,13 @@ function HorizontalSecondaryArea() {
 					</ResponsiveContainer>
 				</div>
 			</SquareChartArea>
-			{/* <SquareChartArea>
-				<div className="squarechartarea pie">
-					<ResponsiveContainer width="100%" height="100%">
-						<PieChart width={400} height={400} onMouseEnter={this.onPieEnter}>
-							<Pie
-								data={data}
-								cx={120}
-								cy={200}
-								innerRadius={60}
-								outerRadius={80}
-								fill="#8884d8"
-								paddingAngle={5}
-								dataKey="value"
-							>
-								{data.map((entry, index) => (
-									<Cell
-										key={`cell-${index}`}
-										fill={COLORS[index % COLORS.length]}
-									/>
-								))}
-							</Pie>
-							<Pie
-								data={data}
-								cx={420}
-								cy={200}
-								startAngle={180}
-								endAngle={0}
-								innerRadius={60}
-								outerRadius={80}
-								fill="#8884d8"
-								paddingAngle={5}
-								dataKey="value"
-							>
-								{data.map((entry, index) => (
-									<Cell
-										key={`cell-${index}`}
-										fill={COLORS[index % COLORS.length]}
-									/>
-								))}
-							</Pie>
-						</PieChart>
-					</ResponsiveContainer> 
-				</div>
-			</SquareChartArea>*/}
 			<SquareChartArea>
 				<div className="squarechartarea pie">
-					<div className="white-circle"></div>
+					<div className="whitecircle"><p>{props.scorevalue} de votre objectif</p></div>
 					<ResponsiveContainer width="100%" height="100%">
-						<PieChart width={400} height={400}>
+						<PieChart >
 							<Pie
-								data={data}
+								data={props.score}
 								cx="50%"
 								cy="50%"
 								innerRadius={70}
@@ -239,9 +193,7 @@ function HorizontalSecondaryArea() {
 					</ResponsiveContainer>
 				</div>
 			</SquareChartArea>
-			{/* <SquareChartArea>
-				<div className="squarechartarea pie"></div>
-			</SquareChartArea> */}
+
 		</div>
 	);
 }

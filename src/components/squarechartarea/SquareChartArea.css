@@ -1,11 +1,12 @@
 .squarechartarea {
-  width: 260px;
-  height: 260px;
+  height: auto;
+  min-height: 100px;
+  aspect-ratio: 1 / 1;
   border-radius: 4px;
   position: relative;
 }
 
-.squarechartarea .white-circle {
+.squarechartarea .whitecircle {
   background-color: #feffff !important;
   border-radius: 100%;
   width: 140px;
@@ -15,6 +16,19 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .squarechartarea .recharts-sector {

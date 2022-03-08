@@ -7,36 +7,16 @@ function HorizontalNavBar() {
 		<section  className="horizontalnavbar">
 			<ul>
 				<li>
-					{/* <NavLink
-						to="/#"
-						className={({isActive}) => isActive ? "active" : ""}
-					> */}
 						Accueil
-					{/* </NavLink> */}
 				</li>
 				<li>
-					{/* {/* <NavLink */}
-						{/* to="/APropos"
-						className={({isActive}) => isActive ? "active" : ""}
-					> */}
 						Profil
-					{/* </NavLink> */} 
 				</li>
                 <li>
-					{/* <NavLink
-						to="/Reglage"
-						className={({isActive}) => isActive ? "active" : ""}
-					> */}
 						Réglage
-					{/* </NavLink> */}
 				</li>
                 <li>
-					{/* <NavLink
-						to="/Communaute"
-						className={({isActive}) => isActive ? "active" : ""}
-					> */}
 						Communauté
-					{/* </NavLink> */}
 				</li>
 			</ul>
 		</section>

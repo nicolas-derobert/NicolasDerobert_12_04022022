@@ -1,11 +1,13 @@
 @import "../../assets/Styles/variables.scss";
 @import "../../assets/Styles/mixin.scss";
 .squarechartarea {
-	width: 260px;
-	height: 260px;
+	// min-width: 260px;
+	height: auto;
+	min-height: 100px;
+	aspect-ratio: 1 / 1; 
 	border-radius: 4px;
 	position: relative;
-	.white-circle {	
+	.whitecircle {	
 		background-color: $fourthly-color !important;
 		border-radius: 100%;
 		width: 140px;
@@ -14,6 +16,10 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		display: flex;
+		flex-flow: row;
+		justify-content: center;
+		align-items: center;
 	}
 	.recharts-sector {
 		// stroke-linejoin: round;

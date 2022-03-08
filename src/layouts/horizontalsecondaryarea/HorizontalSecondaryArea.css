@@ -6,13 +6,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
   border-radius: 4px;
-  gap: 30px;
+  gap: 2%;
 }
 /*# sourceMappingURL=HorizontalSecondaryArea.css.map */

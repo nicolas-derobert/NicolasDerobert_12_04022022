@@ -58,19 +58,49 @@ function App() {
 	const [activityData, setActivityData] = useState([]);
 	const [averageSessionsData, setSessionsData] = useState([]);
 	const [performanceData, setPerformanceData] = useState([]);
+	const [userDataScore, setUserDataScore] = useState("");
+	const [userDataScoreValue, setUserDataScoreValue] = useState("");
+
+
 
 	useEffect(() => {
 		if (userResponse !== null) {
+			console.log(userResponse);
+			let userScoreResponseValue = (userResponse.data.score * 100).toString() + "%"
+			// let userScoreResponseValue = (userResponse.data.score * 100).toString() + "%"
+			
+			let userScoreResponse = [{value: userResponse.data.score*100 },{ value : (100-userResponse.data.score *100)}]
+			console.log(userScoreResponse)
 			setUserData(userResponse);
+			setUserDataScoreValue(userScoreResponseValue);
+			setUserDataScore(userScoreResponse);
+
 		}
 		if (activityResponse !== null) {
-			setActivityData(activityResponse);
+			let activityResponseFormated = activityResponse.data.sessions;
+			for (var i = 0; i < activityResponseFormated.length; i++) {
+				activityResponseFormated[i].name = i + 1;
+			}
+			setActivityData(activityResponseFormated);
 		}
 		if (averageSessionsResponse !== null) {
-			setSessionsData(averageSessionsResponse);
+			const letterDay = ["L", "M", "M", "J", "V", "S", "D"];
+			let averageSessionsResponseFormated =
+				averageSessionsResponse.data.sessions;
+			for (var i = 0; i < averageSessionsResponse.data.sessions.length; i++) {
+				averageSessionsResponseFormated[i].day = letterDay[i];
+			}
+			setSessionsData(averageSessionsResponseFormated);
 		}
 		if (performanceResponse !== null) {
-			setPerformanceData(performanceResponse);
+			const type = ["Intensité", "Vitesse", "Force", "Endurance", "Energie", "Cardio"];
+			let performanceResponseFormated =
+			performanceResponse.data.data;
+			for (var i = 0; i < performanceResponse.data.data.length; i++) {
+				performanceResponseFormated[i].type = type[i];
+			}
+			console.log("performanceResponse");
+			setPerformanceData(performanceResponseFormated);
 		}
 	}, [
 		userResponse,
@@ -79,73 +109,17 @@ function App() {
 		performanceResponse,
 	]);
 
-	const data = [
-		{
-			name: "1",
-			Poids: 80,
-			Calories: 250,
-		},
-		{
-			name: "2",
-			Poids: 80,
-			Calories: 250,
-		},
-		{
-			name: "3",
-			Poids: 80,
-			Calories: 250,
-		},
-		{
-			name: "4",
-			Poids: 80,
-			Calories: 250,
-		},
-		{
-			name: "5",
-			Poids: 80,
-			Calories: 250,
-		},
-		{
-			name: "6",
-			Poids: 80,
-			Calories: 250,
-		},
-		{
-			name: "7",
-			Poids: 80,
-			Calories: 250,
-		},
-	];
-
-	const CustomTooltip = ({ active, payload, label }: any) => {
-		if (active && payload && payload.length) {
-			return (
-				<div className="custom-tooltip">
-					<p className="label">{` ${payload[0].value}Kg`}</p>
-					<p className="label">{` ${payload[1].value}KCal`}</p>
-				</div>
-			);
-		}
-
-		return null;
-	};
-
-	const renderLegend = (props) => {
-		const { payload } = props;
-		return (
-			<ul>
-				<li id="poids">{payload[0].value}</li>
-				<li id="calorie">{payload[1].value}</li>
-			</ul>
-		);
-	};
-
 	return (
 		<div className="App">
 			<GlobalLayout>
 				{!userLoading && (
 					<>
-						<h1 className="titlearea">Bonjour Thomas</h1>
+						<h1 className="titlearea">
+							Bonjour{" "}
+							<span className="firstname">
+								{userData.data.userInfos.firstName}
+							</span>
+						</h1>
 						<p className="congratsarea">
 							{console.log(userData)}
 							{console.log(averageSessionsData)}
@@ -153,55 +127,19 @@ function App() {
 							{console.log(performanceData)}
 							Félicitation ! Vous avez explosé vos objectifs hier 👏
 						</p>
-						<HorizontalMainArea>
-							<h3>Activité quotidienne</h3>
-							<ResponsiveContainer>
-								<BarChart
-									data={data}
-									margin={{
-										top: 5,
-										right: 30,
-										left: 20,
-										bottom: 5,
-									}}
-									barSize={7}
-									fill="#FF0101"
-								>
-									<CartesianGrid strokeDasharray="3 3" />
-									<XAxis
-										dataKey="name"
-										style={{
-											fill: "#9B9EAC",
-										}}
-									></XAxis>
-									<Tooltip content={<CustomTooltip />} />{" "}
-									<Legend
-										verticalAlign="top"
-										align="right"
-										height={36}
-										iconType="circle"
-										iconSize={8}
-										content={renderLegend}
-									/>
-									<Bar
-										name="Poids (Kg)"
-										dataKey="Poids"
-										fill="#000000"
-										minPointSize={5}
-										radius={[3, 3, 0, 0]}
-									></Bar>
-									<Bar
-										name="Calories brûlées (KCal)"
-										dataKey="Calories"
-										fill="#FF0101"
-										minPointSize={10}
-										radius={[3, 3, 0, 0]}
-									/>
-								</BarChart>
-							</ResponsiveContainer>
-						</HorizontalMainArea>
-						<HorizontalSecondaryArea></HorizontalSecondaryArea>
-						<VerticalArea keydata={userData.data.keyData}></VerticalArea>
+						{!activityLoading && <HorizontalMainArea activity={activityData} />}
+
+						{!userLoading & !averageSessionsLoading ? (
+							<HorizontalSecondaryArea
+								score={userDataScore}
+								scorevalue={userDataScoreValue}
+								sessions={averageSessionsData}
+								performance={performanceData}
+							/>
+						) : null}
+						{!userLoading && (
+							<VerticalArea keydata={userData.data.keyData}></VerticalArea>
+						)}
 					</>
 				)}
 				{userLoading && <div>Chargement</div>}

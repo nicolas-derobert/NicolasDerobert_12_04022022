@@ -1,63 +1,63 @@
 @import "../../assets/Styles/variables.scss";
 @import "../../assets/Styles/mixin.scss";
 .horizontalmainarea {
-	// .recharts-text {
-	// 	tspan {
-	// 		color: "9B9EAC" !important;
-	// 		fill: "9B9EAC" !important;
-	// 	}
-	// }
+	
 	display: flex;
 	flex-direction: column;
 	background-color: $secondary-color;
 	border-radius: 4px;
+	.recharts-legend-wrapper{
+height: 0!important;
+	}
+	h3 {
+		margin:15px 0 10px 25px ;
+		font-size: 1.5rem;;
+	}
+		ul {
+			position: absolute;
+			top: -50px;
+			width: 50%;
+			left: 40%;
+			display: flex;
+			flex-flow: row nowrap;
+			align-content: center;
+			justify-content: space-around;
+			list-style: none;
 
-	//   }
-	ul {
-		position: relative;
-		top: -20px;
-		width: 50%;
-		left: 50%;
-		display: flex;
-		flex-flow: row nowrap;
-		align-content: center;
-		justify-content: space-around;
-		list-style: none;
-
-		li {
-			color: $seventhly-color;
-			margin: 10px;
-			font-size: 1.4rem;
-			&::before {
-				position: relative;
-				content: "•";
-				display: inline-block;
-				width: 1em;
-				left: 0.3em;
-				top: 0.7rem;
-				font-size: 2.5em;
-				line-height: 2.5rem;
-			}
-
-			&#poids {
+			li {
+				color: $seventhly-color;
+				margin: 0px;
+				font-size: 1.4rem;
 				&::before {
+					position: relative;
 					content: "•";
-					color: $black-color;
+					display: inline-block;
+					width: 1em;
+					left: 0.3em;
+					top: 0.7rem;
+					font-size: 2.5em;
+					line-height: 2.5rem;
 				}
-			}
-			&#calorie {
-				&::before {
-					content: "•";
-					color: $primary-color;
+
+				&#poids {
+					&::before {
+						content: "•";
+						color: $black-color;
+					}
+				}
+				&#calorie {
+					&::before {
+						content: "•";
+						color: $primary-color;
+					}
 				}
 			}
 		}
-	}
+	
 
-	h3 {
-		margin-left: 20px;
-		margin-right: auto;
-	}
+	//   }
+
+
 	.custom-tooltip {
 		background-color: $primary-color;
 		color: $white-color;

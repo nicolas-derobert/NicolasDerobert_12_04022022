@@ -11,11 +11,20 @@
   border-radius: 4px;
 }
 
+.horizontalmainarea .recharts-legend-wrapper {
+  height: 0 !important;
+}
+
+.horizontalmainarea h3 {
+  margin: 15px 0 10px 25px;
+  font-size: 1.5rem;
+}
+
 .horizontalmainarea ul {
-  position: relative;
-  top: -20px;
+  position: absolute;
+  top: -50px;
   width: 50%;
-  left: 50%;
+  left: 40%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,7 +41,7 @@
 
 .horizontalmainarea ul li {
   color: #74798C;
-  margin: 10px;
+  margin: 0px;
   font-size: 1.4rem;
 }
 
@@ -55,11 +64,6 @@
 .horizontalmainarea ul li#calorie::before {
   content: "•";
   color: #FF0101;
-}
-
-.horizontalmainarea h3 {
-  margin-left: 20px;
-  margin-right: auto;
 }
 
 .horizontalmainarea .custom-tooltip {

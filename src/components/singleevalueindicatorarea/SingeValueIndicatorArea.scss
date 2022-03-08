@@ -2,21 +2,51 @@
 @import "../../assets/Styles/mixin.scss";
 
 .singlevalueindicatorarea {
-    height: 120px;
-    width: 250px;
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-    // margin: 20px;
-    border-radius: 4px;
+	height: 120px;
+	width: 250px;
+	display: flex;
+	flex-flow: row;
+	justify-content: start;
+	align-items: center;
+	// margin: 20px;
+	border-radius: 4px;
 	.iconarea {
-        height: 32px;
-        width: 32px;
-		background-color: $sixthly-color 10%;
+        margin-left: 30px;
+		height: 60px;
+		width: 60px;
+        border-radius: 6px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        &.calorie{
+            background-color: rgba($primary-color,0.1);
+        }
+        &.protein{
+            background-color: rgba($fifthly-color,0.1);
+        }
+        &.carbohydrate{
+            background-color: rgba($ninethly-color,0.1);
+        }
+        &.lipid{
+            background-color: rgba($sixthly-color,0.1);
+        }
+		// background-color: $sixthly-color 10%;
 	}
-    .dataarea{
-        
-    }
+	.dataarea {
+        margin-left: 20px;
+		font-size: 2.4rem;
+		font-weight: 700;
+		.value {
+			.number {
+			}
+			.unit {
+			}
+		}
+		.category {
+			color: $seventhly-color;
+			font-size: 1.4rem;
+		}
+	}
 	background-color: $secondary-color;
 }

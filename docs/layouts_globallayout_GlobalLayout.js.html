@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/singleevalueindicatorarea/SingeValueIndicatorArea.js</title>
+  <title> layouts/globallayout/GlobalLayout.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/singleevalueindicatorarea/SingeValueIndicatorArea.js</h1>
+                    <h1>layouts/globallayout/GlobalLayout.js</h1>
                 </header>
                 
 
@@ -89,58 +89,42 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from "prop-types"
-import React from "react";
-import "./SingeValueIndicatorArea.css";
-
+            <pre class="prettyprint source linenums"><code>import React, { Fragment } from "react";
+import Header from "../header/Header";
+// import Footer from "../../layouts/footer/Footer";
+import "./GlobalLayout.css";
+import VerticalNavBar from "../../components/verticalnavbar/VerticalNavbar";
+import PropTypes from "prop-types";
 /**
- * Component for showing navigation buttons
+ * Component for handling global Layout
  *
  * @component
  */
-
-function SingeValueIndicatorArea(props) {
+function GlobalLayout(props) {
 	return (
-		&lt;div className="singlevalueindicatorarea">
-			&lt;div className={`iconarea ${props.cssClass}`}>
-				&lt;img src={props.svg} alt="Logo" />
-			&lt;/div>
-			&lt;div className="dataarea">
-				&lt;p className="value">
-					&lt;span className="number">{props.number}&lt;/span>
-
-					&lt;span className="unit">{props.unit}&lt;/span>
-				&lt;/p>
-				&lt;p className="category">{props.category}&lt;/p>
-			&lt;/div>
-		&lt;/div>
+		&lt;Fragment>
+			&lt;section className="globallayout">
+				&lt;Header>&lt;/Header>
+				&lt;main>
+					&lt;aside>
+						&lt;VerticalNavBar>&lt;/VerticalNavBar>
+						&lt;div className="copyright">&lt;p>	Copyright, SportSee 2020&lt;/p>&lt;/div>
+					&lt;/aside>
+					&lt;section className="content">{props.children}&lt;/section>
+				&lt;/main>
+			&lt;/section>
+		&lt;/Fragment>
 	);
 }
 
-SingeValueIndicatorArea.propTypes = {
-		/**
-* Type of figure
-*/
-  category: PropTypes.any,
-  //   /**
-// * css class to apply
-// */
-  cssClass: PropTypes.any,//   /**
-// * Value for the figure
-// */
-  number: PropTypes.any,//   /**
-// * Logo in svg format
-// */
-  svg: PropTypes.any,//   /**
-// * Unit of Figure
-// */
-  unit: PropTypes.any
+GlobalLayout.propTypes = {
+	/**
+	 * Html node to display as a child
+	 */
+  children: PropTypes.node.isRequired,
 }
 
-
-
-export default SingeValueIndicatorArea;
-
+export default GlobalLayout;
 </code></pre>
         </article>
     </section>

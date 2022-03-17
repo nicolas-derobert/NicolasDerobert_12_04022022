@@ -10,8 +10,7 @@
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(^|\\/|\\\\)_"
     },
-    "plugins": ["plugins/markdown", "better-docs/component","node_modules/better-docs/component","node_modules/better-docs/typescript"],
-    
+    "plugins": ["plugins/markdown", "better-docs/component"],
     "templates": {
       "better-docs": {
         "name": "My React components"
@@ -20,6 +19,8 @@
     "opts": {
       "destination": "docs",
       "recurse": true,
-      "readme": "README.md"
+      "readme": "README.md",
+      "template": "node_modules/better-docs"
+
     }
   }

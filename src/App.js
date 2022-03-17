@@ -4,7 +4,7 @@ import GlobalLayout from "./layouts/globallayout/GlobalLayout";
 import HorizontalMainArea from "./layouts/horizontalmainarea/HorizontalMainArea";
 import HorizontalSecondaryArea from "./layouts/horizontalsecondaryarea/HorizontalSecondaryArea";
 import VerticalArea from "./layouts/verticalarrea/VerticalArea";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useApi } from "./hooks/use-api";
 import "./App.css";
 
@@ -34,17 +34,20 @@ function App() {
 	let urlUserPerformance = actualUrlUserPerformance;
 
 	/**
-	 *
-	 * @type {number}
-	 * @const
-	 */
-	//  ${slash}
+ * Component for showing navigation buttons
+ *
+ * @component
+ */
+/**
+ * Object with api feed-back
+ *  * @typedef {userResponse: Object, userLoading: string, error: number}
+ */
 	const {
 		response: userResponse,
 		loading: userLoading,
 		error: userError,
 	} = useApi({ method: "get", url: `${urlUserInfo}` });
-	console.log(userResponse);
+	console.log(userError);
 	const {
 		response: activityResponse,
 		loading: activityLoading,
@@ -87,7 +90,7 @@ function App() {
 		if (activityResponse !== null) {
 			let activityResponseFormated = activityResponse.data.sessions;
 			for (let i = 0; i < activityResponseFormated.length; i++) {
-				activityResponseFormated[i].name = i + 1;
+				activityResponseFormated[i].dayNumber = i + 1;
 			}
 			setActivityData(activityResponseFormated);
 		}

@@ -1,11 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import HorizontalNavBar from "../../components/horizontalnavbar/HorizontalNavBar";
 import Logo from "../../assets/images/logo.svg";
 import "./Header.css";
 
-
-export class Header extends Component {
-	render() {
+/**
+ * Component to handle navigation buttons
+ *
+ * @component
+ */
+function Header() {	
 		return (
 			<header className="header">
 				
@@ -16,7 +19,7 @@ export class Header extends Component {
 				<HorizontalNavBar></HorizontalNavBar>
 			</header>
 		);
-	}
+	
 }
 
 export default Header;

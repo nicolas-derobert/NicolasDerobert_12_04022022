@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/singleevalueindicatorarea/SingeValueIndicatorArea.js</title>
+  <title> layouts/header/Header.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/singleevalueindicatorarea/SingeValueIndicatorArea.js</h1>
+                    <h1>layouts/header/Header.js</h1>
                 </header>
                 
 
@@ -89,58 +89,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from "prop-types"
-import React from "react";
-import "./SingeValueIndicatorArea.css";
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import HorizontalNavBar from "../../components/horizontalnavbar/HorizontalNavBar";
+import Logo from "../../assets/images/logo.svg";
+import "./Header.css";
 
 /**
- * Component for showing navigation buttons
+ * Component to handle navigation buttons
  *
  * @component
  */
-
-function SingeValueIndicatorArea(props) {
-	return (
-		&lt;div className="singlevalueindicatorarea">
-			&lt;div className={`iconarea ${props.cssClass}`}>
-				&lt;img src={props.svg} alt="Logo" />
-			&lt;/div>
-			&lt;div className="dataarea">
-				&lt;p className="value">
-					&lt;span className="number">{props.number}&lt;/span>
-
-					&lt;span className="unit">{props.unit}&lt;/span>
-				&lt;/p>
-				&lt;p className="category">{props.category}&lt;/p>
-			&lt;/div>
-		&lt;/div>
-	);
+function Header() {	
+		return (
+			&lt;header className="header">
+				
+				&lt;div className="header-logo">
+					
+					&lt;img src={Logo} alt="Logo" />
+				&lt;/div>
+				&lt;HorizontalNavBar>&lt;/HorizontalNavBar>
+			&lt;/header>
+		);
+	
 }
 
-SingeValueIndicatorArea.propTypes = {
-		/**
-* Type of figure
-*/
-  category: PropTypes.any,
-  //   /**
-// * css class to apply
-// */
-  cssClass: PropTypes.any,//   /**
-// * Value for the figure
-// */
-  number: PropTypes.any,//   /**
-// * Logo in svg format
-// */
-  svg: PropTypes.any,//   /**
-// * Unit of Figure
-// */
-  unit: PropTypes.any
-}
-
-
-
-export default SingeValueIndicatorArea;
-
+export default Header;
 </code></pre>
         </article>
     </section>

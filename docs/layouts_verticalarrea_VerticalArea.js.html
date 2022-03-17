@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/singleevalueindicatorarea/SingeValueIndicatorArea.js</title>
+  <title> layouts/verticalarrea/VerticalArea.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/singleevalueindicatorarea/SingeValueIndicatorArea.js</h1>
+                    <h1>layouts/verticalarrea/VerticalArea.js</h1>
                 </header>
                 
 
@@ -89,58 +89,42 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from "prop-types"
-import React from "react";
-import "./SingeValueIndicatorArea.css";
-
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import SingeValueIndicatorArea from "../../components/singleevalueindicatorarea/SingeValueIndicatorArea";
+import "./VerticalArea.css";
+import calorieLogo from"../../assets/images/calorie.svg"
+import proteinLogo from"../../assets/images/protein.svg"
+import carbohydrateLogo from"../../assets/images/carbohydrate.svg"
+import lipidLogo from"../../assets/images/lipid.svg"
+import PropTypes from "prop-types";
 /**
  * Component for showing navigation buttons
  *
  * @component
  */
 
-function SingeValueIndicatorArea(props) {
-	return (
-		&lt;div className="singlevalueindicatorarea">
-			&lt;div className={`iconarea ${props.cssClass}`}>
-				&lt;img src={props.svg} alt="Logo" />
-			&lt;/div>
-			&lt;div className="dataarea">
-				&lt;p className="value">
-					&lt;span className="number">{props.number}&lt;/span>
+function VerticalArea(props) {
+	return (	
 
-					&lt;span className="unit">{props.unit}&lt;/span>
-				&lt;/p>
-				&lt;p className="category">{props.category}&lt;/p>
-			&lt;/div>
+		&lt;div className="verticalarea">
+			&lt;SingeValueIndicatorArea number={props.keydata.calorieCount} unit="Kcal" category="Calories" svg={calorieLogo} cssClass="calorie" />
+			&lt;SingeValueIndicatorArea number={props.keydata.proteinCount} unit="g" category="Proteines" svg={proteinLogo} cssClass="protein"/>
+			&lt;SingeValueIndicatorArea number={props.keydata.carbohydrateCount} unit="g" category="Glucides" svg={carbohydrateLogo} cssClass="carbohydrate"/>
+			&lt;SingeValueIndicatorArea number={props.keydata.lipidCount} unit="g" category="Lipides" svg={lipidLogo} cssClass="lipid"/>
 		&lt;/div>
 	);
 }
 
-SingeValueIndicatorArea.propTypes = {
-		/**
-* Type of figure
-*/
-  category: PropTypes.any,
-  //   /**
-// * css class to apply
-// */
-  cssClass: PropTypes.any,//   /**
-// * Value for the figure
-// */
-  number: PropTypes.any,//   /**
-// * Logo in svg format
-// */
-  svg: PropTypes.any,//   /**
-// * Unit of Figure
-// */
-  unit: PropTypes.any
+VerticalArea.propTypes = {
+  keydata: PropTypes.shape({
+    calorieCount: PropTypes.any,
+    carbohydrateCount: PropTypes.any,
+    lipidCount: PropTypes.any,
+    proteinCount: PropTypes.any
+  })
 }
 
-
-
-export default SingeValueIndicatorArea;
-
+export default VerticalArea;
 </code></pre>
         </article>
     </section>

@@ -10,7 +10,11 @@ import {
 	Legend,
 	ResponsiveContainer,
 } from "recharts";
-
+/**
+ * Component to display main graph of page
+ *
+ * @component
+ */
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -34,8 +38,6 @@ const renderLegend = (content) => {
   );
 };
 function HorizontalMainArea(props) {
-	{console.log(props.activity)}
-
 	return (
 		<div className="horizontalmainarea">
 			<h3>Activité quotidienne</h3>
@@ -53,7 +55,7 @@ function HorizontalMainArea(props) {
 				>
 					<CartesianGrid strokeDasharray="3 3" />
 					<XAxis
-						dataKey="name"
+						dataKey="dayNumber"
 						style={{
 							fill: "#9B9EAC",
 						}}
@@ -88,11 +90,24 @@ function HorizontalMainArea(props) {
 }
 
 HorizontalMainArea.propTypes = {
+/**
+ * Array of all required values used to create graph
+ */
   activity: PropTypes.arrayOf(PropTypes.shape({
-    day: PropTypes.string,
+    /**
+	 * Day linked to value
+	 */
+	day: PropTypes.string,
+	/**
+	 * Weight in kilogram
+	 */
     kilogram: PropTypes.number,
+	/**Calories brûlées */
 	calories: PropTypes.number,
-	name: PropTypes.number
+/**
+ * Number related to the day
+ */
+	dayNumber: PropTypes.number
   })),
 }
 

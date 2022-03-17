@@ -2,16 +2,12 @@ import React from "react";
 import "./HorizontalSecondaryArea.css";
 import SquareChartArea from "../../components/squarechartarea/SquareChartArea";
 import PropTypes from "prop-types";
-
 import "../../components/squarechartarea/SquareChartArea.css";
 import {
 	LineChart,
 	Line,
 	XAxis,
-	YAxis,
-	CartesianGrid,
 	Tooltip,
-	Legend,
 	ResponsiveContainer,
 	PolarRadiusAxis,
 	PolarAngleAxis,
@@ -23,14 +19,19 @@ import {
 	RadarChart,
 } from "recharts";
 
+/**
+ * Component for showing all graphs displayed in the second horizontal bar
+ *
+ * @component
+ */
 function HorizontalSecondaryArea(props) {
 	const COLORS = ["#FF0101", "#FBFBFB", "#FFBB28", "#FF8042"];
-	console.log(props)
+	console.log(props);
 	return (
 		<div className="horizontalsecondaryarea">
 			<SquareChartArea>
 				<div className="squarechartarea line">
-					<h3>Durée moyenne des sessions</h3>					
+					<h3>Durée moyenne des sessions</h3>
 					<ResponsiveContainer height="80%" width="100%">
 						<LineChart
 							data={props.sessions}
@@ -64,12 +65,14 @@ function HorizontalSecondaryArea(props) {
 			<SquareChartArea>
 				<div className="squarechartarea radar">
 					<ResponsiveContainer width="100%" height="100%">
-						<RadarChart cx="50%" cy="50%" outerRadius="80%" data={props.performance}>
+						<RadarChart
+							cx="50%"
+							cy="50%"
+							outerRadius="80%"
+							data={props.performance}
+						>
 							<PolarGrid />
-							<PolarAngleAxis
-								dataKey="type"
-								tick={{ fill: "#FFFFFF" }}
-							/>
+							<PolarAngleAxis dataKey="type" tick={{ fill: "#FFFFFF" }} />
 							<PolarRadiusAxis angle={30} domain={[0, 150]} />
 							<Radar
 								name=""
@@ -84,9 +87,11 @@ function HorizontalSecondaryArea(props) {
 			</SquareChartArea>
 			<SquareChartArea>
 				<div className="squarechartarea pie">
-					<div className="whitecircle"><p>{props.scorevalue} de votre objectif</p></div>
+					<div className="whitecircle">
+						<p>{props.scorevalue} de votre objectif</p>
+					</div>
 					<ResponsiveContainer width="100%" height="100%">
-						<PieChart >
+						<PieChart>
 							<Pie
 								data={props.score}
 								cx="50%"
@@ -110,16 +115,49 @@ function HorizontalSecondaryArea(props) {
 					</ResponsiveContainer>
 				</div>
 			</SquareChartArea>
-
 		</div>
 	);
 }
 
 HorizontalSecondaryArea.propTypes = {
-  performance: PropTypes.any,
-  score: PropTypes.any,
-  scorevalue: PropTypes.any,
-  sessions: PropTypes.any
-}
+	/**
+	 * Performance figures
+	 */
+	performance: PropTypes.arrayOf(
+		PropTypes.shape({
+			/**
+			 * Number related to the Kind of measurement
+			 */
+			kind: PropTypes.number,
+			/**
+			 * Name of measurement
+			 */
+			type: PropTypes.string,
+			/**Measurement */
+			value: PropTypes.number,
+		})
+	),
+	/**
+	 * Array with two values. The first value is initial value of score. The second value is the result of subtraction of the to the number of 100
+	 */
+	// score: PropTypes.arrayOf(PropTypes.number),
+	/**
+	 * First value is initial value of score
+	 */
+	scorevalue: PropTypes.string,
+	/**
+	 * Average duration of sessions
+	 */
+	sessions: PropTypes.arrayOf(
+		PropTypes.shape({
+			/**Session duration*/
+			sessionLength: PropTypes.number,
+			/**
+			 * Letter corresponding to the related day
+			 */
+			day: PropTypes.string,
+		})
+	),
+};
 
 export default HorizontalSecondaryArea;

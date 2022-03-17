@@ -4,22 +4,23 @@ import "./NavButton.css";
 
 
 /**
- * Some documented component
+ * Component for showing navigation buttons
  *
- * @component	
+ * @component
  */
-
 function NavButton(props) {
 	return (
 		<div className="navbutton">
-			<img src={props.svg} alt="Logo" />
-			
+			<img src={props.svg} alt="Logo" />			
 		</div>
 	);
 }
 
 NavButton.propTypes = {
-  svg: PropTypes.any
+	/**
+   * Path to the logo in svg format
+   */
+  svg: PropTypes.string
 }
 
 

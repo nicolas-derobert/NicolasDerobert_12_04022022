@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/singleevalueindicatorarea/SingeValueIndicatorArea.js</title>
+  <title> layouts/horizontalmainarea/HorizontalMainArea.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/singleevalueindicatorarea/SingeValueIndicatorArea.js</h1>
+                    <h1>layouts/horizontalmainarea/HorizontalMainArea.js</h1>
                 </header>
                 
 
@@ -91,56 +91,118 @@
         <article>
             <pre class="prettyprint source linenums"><code>import PropTypes from "prop-types"
 import React from "react";
-import "./SingeValueIndicatorArea.css";
-
+import "./HorizontalMainArea.css";
+import {
+	BarChart,
+	Bar,
+		XAxis,
+	CartesianGrid,
+	Tooltip,
+	Legend,
+	ResponsiveContainer,
+} from "recharts";
 /**
- * Component for showing navigation buttons
+ * Component to display main graph of page
  *
  * @component
  */
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active &amp;&amp; payload &amp;&amp; payload.length) {
+    return (
+      &lt;div className="custom-tooltip">
+        &lt;p className="label">{` ${payload[0].value}Kg`}&lt;/p>
+        &lt;p className="label">{` ${payload[1].value}KCal`}&lt;/p>
+      &lt;/div>
+    );
+  }
 
-function SingeValueIndicatorArea(props) {
+  return null;
+};
+
+const renderLegend = (content) => {
+  const { payload } = content;
+  return (
+    &lt;ul>
+      &lt;li id="poids">{payload[0].value}&lt;/li>
+      &lt;li id="calorie">{payload[1].value}&lt;/li>
+    &lt;/ul>
+  );
+};
+function HorizontalMainArea(props) {
 	return (
-		&lt;div className="singlevalueindicatorarea">
-			&lt;div className={`iconarea ${props.cssClass}`}>
-				&lt;img src={props.svg} alt="Logo" />
-			&lt;/div>
-			&lt;div className="dataarea">
-				&lt;p className="value">
-					&lt;span className="number">{props.number}&lt;/span>
-
-					&lt;span className="unit">{props.unit}&lt;/span>
-				&lt;/p>
-				&lt;p className="category">{props.category}&lt;/p>
-			&lt;/div>
+		&lt;div className="horizontalmainarea">
+			&lt;h3>Activité quotidienne&lt;/h3>
+			&lt;ResponsiveContainer height="90%" width="100%">
+				&lt;BarChart
+					data={props.activity}
+					margin={{
+						top: 0,
+						right: 30,
+						left: 20,
+						bottom: 5,
+					}}
+					barSize={7}
+					fill="#FF0101"
+				>
+					&lt;CartesianGrid strokeDasharray="3 3" />
+					&lt;XAxis
+						dataKey="dayNumber"
+						style={{
+							fill: "#9B9EAC",
+						}}
+					>&lt;/XAxis>
+					&lt;Tooltip content={&lt;CustomTooltip />} />{" "}
+					&lt;Legend
+						verticalAlign="top"
+						align="right"
+						height={36}
+						iconType="circle"
+						iconSize={8}
+						content={renderLegend}
+					/>
+					&lt;Bar
+						name="Poids (Kg)"
+						dataKey="kilogram"
+						fill="#000000"
+						minPointSize={5}
+						radius={[3, 3, 0, 0]}
+					>&lt;/Bar>
+					&lt;Bar
+						name="Calories brûlées (KCal)"
+						dataKey="calories"
+						fill="#FF0101"
+						minPointSize={10}
+						radius={[3, 3, 0, 0]}
+					/>
+				&lt;/BarChart>
+			&lt;/ResponsiveContainer>
 		&lt;/div>
 	);
 }
 
-SingeValueIndicatorArea.propTypes = {
-		/**
-* Type of figure
-*/
-  category: PropTypes.any,
-  //   /**
-// * css class to apply
-// */
-  cssClass: PropTypes.any,//   /**
-// * Value for the figure
-// */
-  number: PropTypes.any,//   /**
-// * Logo in svg format
-// */
-  svg: PropTypes.any,//   /**
-// * Unit of Figure
-// */
-  unit: PropTypes.any
+HorizontalMainArea.propTypes = {
+/**
+ * Array of all required values used to create graph
+ */
+  activity: PropTypes.arrayOf(PropTypes.shape({
+    /**
+	 * Day linked to value
+	 */
+	day: PropTypes.string,
+	/**
+	 * Weight in kilogram
+	 */
+    kilogram: PropTypes.number,
+	/**Calories brûlées */
+	calories: PropTypes.number,
+/**
+ * Number related to the day
+ */
+	dayNumber: PropTypes.number
+  })),
 }
 
-
-
-export default SingeValueIndicatorArea;
-
+export default HorizontalMainArea;
 </code></pre>
         </article>
     </section>

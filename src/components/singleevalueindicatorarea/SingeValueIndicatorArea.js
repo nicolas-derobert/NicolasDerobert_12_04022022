@@ -3,9 +3,9 @@ import React from "react";
 import "./SingeValueIndicatorArea.css";
 
 /**
- * 
- * @param {Object} props 
- * @returns 
+ * Component for showing navigation buttons
+ *
+ * @component
  */
 
 function SingeValueIndicatorArea(props) {
@@ -27,11 +27,26 @@ function SingeValueIndicatorArea(props) {
 }
 
 SingeValueIndicatorArea.propTypes = {
-  category: PropTypes.string,
-  cssClass: PropTypes.string,
-  number: PropTypes.number,
-  svg: PropTypes.string,
-  unit: PropTypes.string
+		/**
+* Type of figure
+*/
+  category: PropTypes.any,
+  //   /**
+// * css class to apply
+// */
+  cssClass: PropTypes.any,//   /**
+// * Value for the figure
+// */
+  number: PropTypes.any,//   /**
+// * Logo in svg format
+// */
+  svg: PropTypes.any,//   /**
+// * Unit of Figure
+// */
+  unit: PropTypes.any
 }
 
+
+
 export default SingeValueIndicatorArea;
+

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/singleevalueindicatorarea/SingeValueIndicatorArea.js</title>
+  <title> layouts/horizontalsecondaryarea/HorizontalSecondaryArea.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/singleevalueindicatorarea/SingeValueIndicatorArea.js</h1>
+                    <h1>layouts/horizontalsecondaryarea/HorizontalSecondaryArea.js</h1>
                 </header>
                 
 
@@ -89,58 +89,169 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from "prop-types"
-import React from "react";
-import "./SingeValueIndicatorArea.css";
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import "./HorizontalSecondaryArea.css";
+import SquareChartArea from "../../components/squarechartarea/SquareChartArea";
+import PropTypes from "prop-types";
+import "../../components/squarechartarea/SquareChartArea.css";
+import {
+	LineChart,
+	Line,
+	XAxis,
+	Tooltip,
+	ResponsiveContainer,
+	PolarRadiusAxis,
+	PolarAngleAxis,
+	PolarGrid,
+	PieChart,
+	Pie,
+	Radar,
+	Cell,
+	RadarChart,
+} from "recharts";
 
 /**
- * Component for showing navigation buttons
+ * Component for showing all graphs displayed in the second horizontal bar
  *
  * @component
  */
-
-function SingeValueIndicatorArea(props) {
+function HorizontalSecondaryArea(props) {
+	const COLORS = ["#FF0101", "#FBFBFB", "#FFBB28", "#FF8042"];
+	console.log(props);
 	return (
-		&lt;div className="singlevalueindicatorarea">
-			&lt;div className={`iconarea ${props.cssClass}`}>
-				&lt;img src={props.svg} alt="Logo" />
-			&lt;/div>
-			&lt;div className="dataarea">
-				&lt;p className="value">
-					&lt;span className="number">{props.number}&lt;/span>
-
-					&lt;span className="unit">{props.unit}&lt;/span>
-				&lt;/p>
-				&lt;p className="category">{props.category}&lt;/p>
-			&lt;/div>
+		&lt;div className="horizontalsecondaryarea">
+			&lt;SquareChartArea>
+				&lt;div className="squarechartarea line">
+					&lt;h3>Durée moyenne des sessions&lt;/h3>
+					&lt;ResponsiveContainer height="80%" width="100%">
+						&lt;LineChart
+							data={props.sessions}
+							margin={{
+								top: 5,
+								right: 30,
+								left: 20,
+								bottom: 5,
+							}}
+						>
+							{/* &lt;CartesianGrid strokeDasharray="3 3" /> */}
+							&lt;XAxis
+								dataKey="day"
+								axisLine={false}
+								tickLine={false}
+								stroke="#ffffff"
+							/>
+							{/* &lt;YAxis /> */}
+							&lt;Tooltip />
+							{/* &lt;Legend /> */}
+							&lt;Line
+								type="monotone"
+								dataKey="sessionLength"
+								stroke="#ffffff"
+								strokeWidth={1}
+							/>
+						&lt;/LineChart>
+					&lt;/ResponsiveContainer>
+				&lt;/div>
+			&lt;/SquareChartArea>
+			&lt;SquareChartArea>
+				&lt;div className="squarechartarea radar">
+					&lt;ResponsiveContainer width="100%" height="100%">
+						&lt;RadarChart
+							cx="50%"
+							cy="50%"
+							outerRadius="80%"
+							data={props.performance}
+						>
+							&lt;PolarGrid />
+							&lt;PolarAngleAxis dataKey="type" tick={{ fill: "#FFFFFF" }} />
+							&lt;PolarRadiusAxis angle={30} domain={[0, 150]} />
+							&lt;Radar
+								name=""
+								dataKey="value"
+								stroke="#FF0101"
+								fill="#FF0101"
+								fillOpacity={0.6}
+							/>
+						&lt;/RadarChart>
+					&lt;/ResponsiveContainer>
+				&lt;/div>
+			&lt;/SquareChartArea>
+			&lt;SquareChartArea>
+				&lt;div className="squarechartarea pie">
+					&lt;div className="whitecircle">
+						&lt;p>{props.scorevalue} de votre objectif&lt;/p>
+					&lt;/div>
+					&lt;ResponsiveContainer width="100%" height="100%">
+						&lt;PieChart>
+							&lt;Pie
+								data={props.score}
+								cx="50%"
+								cy="50%"
+								innerRadius={70}
+								outerRadius={80}
+								cornerRadius={40}
+								paddingAngle={5}
+								dataKey="value"
+							>
+								{props.score.map((entry, index) => (
+									&lt;Cell
+										key={`cell-${index}`}
+										fill={COLORS[index % COLORS.length]}
+										strokeWidth="0"
+										// style={{borderRadius:"50%"}}
+									/>
+								))}
+							&lt;/Pie>
+						&lt;/PieChart>
+					&lt;/ResponsiveContainer>
+				&lt;/div>
+			&lt;/SquareChartArea>
 		&lt;/div>
 	);
 }
 
-SingeValueIndicatorArea.propTypes = {
-		/**
-* Type of figure
-*/
-  category: PropTypes.any,
-  //   /**
-// * css class to apply
-// */
-  cssClass: PropTypes.any,//   /**
-// * Value for the figure
-// */
-  number: PropTypes.any,//   /**
-// * Logo in svg format
-// */
-  svg: PropTypes.any,//   /**
-// * Unit of Figure
-// */
-  unit: PropTypes.any
-}
+HorizontalSecondaryArea.propTypes = {
+	/**
+	 * Performance figures
+	 */
+	performance: PropTypes.arrayOf(
+		PropTypes.shape({
+			/**
+			 * Number related to the Kind of measurement
+			 */
+			kind: PropTypes.number,
+			/**
+			 * Name of measurement
+			 */
+			type: PropTypes.string,
+			/**Measurement */
+			value: PropTypes.number,
+		})
+	),
+	/**
+	 * Array with two values. The first value is initial value of score. The second value is the result of subtraction of the to the number of 100
+	 */
+	// score: PropTypes.arrayOf(PropTypes.number),
+	/**
+	 * First value is initial value of score
+	 */
+	scorevalue: PropTypes.string,
+	/**
+	 * Average duration of sessions
+	 */
+	sessions: PropTypes.arrayOf(
+		PropTypes.shape({
+			/**Session duration*/
+			sessionLength: PropTypes.number,
+			/**
+			 * Letter corresponding to the related day
+			 */
+			day: PropTypes.string,
+		})
+	),
+};
 
-
-
-export default SingeValueIndicatorArea;
-
+export default HorizontalSecondaryArea;
 </code></pre>
         </article>
     </section>

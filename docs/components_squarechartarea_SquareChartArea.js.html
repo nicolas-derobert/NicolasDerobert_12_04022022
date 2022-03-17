@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/singleevalueindicatorarea/SingeValueIndicatorArea.js</title>
+  <title> components/squarechartarea/SquareChartArea.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/singleevalueindicatorarea/SingeValueIndicatorArea.js</h1>
+                    <h1>components/squarechartarea/SquareChartArea.js</h1>
                 </header>
                 
 
@@ -89,58 +89,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from "prop-types"
-import React from "react";
-import "./SingeValueIndicatorArea.css";
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import './SquareChartArea.css'
+import PropTypes from "prop-types";
 
 /**
- * Component for showing navigation buttons
+ * Component to manage Layout of the square indicators
  *
  * @component
  */
-
-function SingeValueIndicatorArea(props) {
-	return (
-		&lt;div className="singlevalueindicatorarea">
-			&lt;div className={`iconarea ${props.cssClass}`}>
-				&lt;img src={props.svg} alt="Logo" />
-			&lt;/div>
-			&lt;div className="dataarea">
-				&lt;p className="value">
-					&lt;span className="number">{props.number}&lt;/span>
-
-					&lt;span className="unit">{props.unit}&lt;/span>
-				&lt;/p>
-				&lt;p className="category">{props.category}&lt;/p>
-			&lt;/div>
-		&lt;/div>
-	);
+function SquareChartArea(props) {
+	return &lt;>
+	{props.children
+	}
+	&lt;/>;
 }
+SquareChartArea.propTypes = {
+	/**
+	 * Html node to display as a child
+	 */
+	children: PropTypes.node.isRequired,
+  }
 
-SingeValueIndicatorArea.propTypes = {
-		/**
-* Type of figure
-*/
-  category: PropTypes.any,
-  //   /**
-// * css class to apply
-// */
-  cssClass: PropTypes.any,//   /**
-// * Value for the figure
-// */
-  number: PropTypes.any,//   /**
-// * Logo in svg format
-// */
-  svg: PropTypes.any,//   /**
-// * Unit of Figure
-// */
-  unit: PropTypes.any
-}
-
-
-
-export default SingeValueIndicatorArea;
-
+export default SquareChartArea;
 </code></pre>
         </article>
     </section>

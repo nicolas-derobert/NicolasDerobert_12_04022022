@@ -4,7 +4,11 @@ import Header from "../header/Header";
 import "./GlobalLayout.css";
 import VerticalNavBar from "../../components/verticalnavbar/VerticalNavbar";
 import PropTypes from "prop-types";
-
+/**
+ * Component for handling global Layout
+ *
+ * @component
+ */
 function GlobalLayout(props) {
 	return (
 		<Fragment>
@@ -18,13 +22,15 @@ function GlobalLayout(props) {
 					<section className="content">{props.children}</section>
 				</main>
 			</section>
-			{/* <Footer></Footer> */}
 		</Fragment>
 	);
 }
 
 GlobalLayout.propTypes = {
-  children: PropTypes.any
+	/**
+	 * Html node to display as a child
+	 */
+  children: PropTypes.node.isRequired,
 }
 
 export default GlobalLayout;

@@ -10,7 +10,6 @@ function Gallery() {
 //  const listOfItems = data.map((logement) => <Thumb  key={logement.id} id={logement.id} title={logement.title} cover={logement.cover}></Thumb>)
     return (
         <div className="gallery">
-              {/* {listOfItems}              */}
         </div>
     )
 }

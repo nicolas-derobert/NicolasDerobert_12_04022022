@@ -1,6 +1,7 @@
 import React from "react";
 import "./HorizontalSecondaryArea.css";
 import SquareChartArea from "../../components/squarechartarea/SquareChartArea";
+import PropTypes from "prop-types";
 
 import "../../components/squarechartarea/SquareChartArea.css";
 import {
@@ -23,92 +24,8 @@ import {
 } from "recharts";
 
 function HorizontalSecondaryArea(props) {
-	const datadureesession = [
-		{
-			day: "L",
-			duree: 10,
-		},
-		{
-			day: "M",
-			duree: 5,
-		},
-		{
-			day: "M",
-			duree: 68,
-		},
-		{
-			day: "J",
-			duree: 18,
-		},
-		{
-			day: "V",
-			duree: 68,
-		},
-		{
-			day: "S",
-			duree: 68,
-		},
-		{
-			day: "D",
-			duree: 68,
-		},
-	];
-	const dataradar = [
-		{
-			type: "Intensité",
-			value: 120,
-			fullMark: 150,
-		},
-		{
-			type: "Vitesse",
-			value: 98,
-			fullMark: 150,
-		},
-		{
-			type: "Force",
-			value: 86,
-			fullMark: 150,
-		},
-		{
-			type: "Endurance",
-			value: 99,
-			fullMark: 150,
-		},
-		{
-			type: "Energie",
-			value: 85,
-			fullMark: 150,
-		},
-		{
-			type: "Cardio",
-			value: 65,
-			fullMark: 150,
-		},
-	];
-	const dataPie = [{ name: "Group A", value: 400 }];
-	// const data01 = [
-	// 	{ name: "Group A", value: 400 },
-	// 	{ name: "Group B", value: 300 },
-	// 	{ name: "Group C", value: 300 },
-	// 	{ name: "Group D", value: 200 },
-	// 	{ name: "Group E", value: 278 },
-	// 	{ name: "Group F", value: 189 },
-	// ];
-
-	// const data02 = [
-	// 	{ name: "Group A", value: 2400 },
-	// 	{ name: "Group B", value: 4567 },
-	// 	{ name: "Group C", value: 1398 },
-	// 	{ name: "Group D", value: 9800 },
-	// 	{ name: "Group E", value: 3908 },
-	// 	{ name: "Group F", value: 4800 },
-	// ];
-	const data = [
-		{  value: 15 },
-		{  value: 85 },
-	];
 	const COLORS = ["#FF0101", "#FBFBFB", "#FFBB28", "#FF8042"];
-
+	console.log(props)
 	return (
 		<div className="horizontalsecondaryarea">
 			<SquareChartArea>
@@ -180,7 +97,7 @@ function HorizontalSecondaryArea(props) {
 								paddingAngle={5}
 								dataKey="value"
 							>
-								{data.map((entry, index) => (
+								{props.score.map((entry, index) => (
 									<Cell
 										key={`cell-${index}`}
 										fill={COLORS[index % COLORS.length]}
@@ -196,6 +113,13 @@ function HorizontalSecondaryArea(props) {
 
 		</div>
 	);
+}
+
+HorizontalSecondaryArea.propTypes = {
+  performance: PropTypes.any,
+  score: PropTypes.any,
+  scorevalue: PropTypes.any,
+  sessions: PropTypes.any
 }
 
 export default HorizontalSecondaryArea;

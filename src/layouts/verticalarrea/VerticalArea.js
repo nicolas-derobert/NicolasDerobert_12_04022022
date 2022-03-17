@@ -5,6 +5,7 @@ import calorieLogo from"../../assets/images/calorie.svg"
 import proteinLogo from"../../assets/images/protein.svg"
 import carbohydrateLogo from"../../assets/images/carbohydrate.svg"
 import lipidLogo from"../../assets/images/lipid.svg"
+import PropTypes from "prop-types";
 
 
 function VerticalArea(props) {

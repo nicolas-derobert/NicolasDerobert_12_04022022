@@ -2,50 +2,21 @@
 @import "../../assets/Styles/mixin.scss";
 
 header {
-	// margin: 30px 30px 10px 30px;
-	// margin: 30px 10%;
-	// padding-left: 30px;
+
 	width: 100%;
 	height: 10vh;
-
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
 	background-color: $black-color ;
 	color: $white-color;
-	// @include large-max-generic {
-	// 	width: 1200px;
-	// 	margin: auto;
-	// }
-	// @include small-generic {
-	// 	width: 90%;
-	// 	margin: 5%;
-	// }
-	// @include mobile-generic {
-	// 	width: 90%;
-	// 	margin: 5%;
-	// }
 	.header-logo {
-		flex: 0 0 20%;
+		flex: 0 0 10%;
 		width: 100%;
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: flex-start;
-		padding-left: 60px;
-		// @include large-max-generic {
-		// 	width: 1200px;
-		// }
-		// @include small-generic {
-		// 	flex-grow: 1;
-        //     flex-basis: 40%;
-		// }
-		// @include mobile-generic {
-		// 	flex-grow: 1;
-        //     flex-basis: 40%;
-		// 	img {
-		// 		width: 100%;
-		// 	}
-		// }
+		padding-left: 6rem;
 	}
 }

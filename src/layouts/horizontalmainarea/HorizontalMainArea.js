@@ -1,62 +1,17 @@
+import PropTypes from "prop-types"
 import React from "react";
 import "./HorizontalMainArea.css";
-
-
 import {
 	BarChart,
 	Bar,
-	Cell,
-	XAxis,
-	YAxis,
+		XAxis,
 	CartesianGrid,
 	Tooltip,
 	Legend,
-	Label,
-	LabelList,
 	ResponsiveContainer,
 } from "recharts";
 
-
-
-const data = [
-  {
-    name: "1",
-    Poids: 80,
-    Calories: 250,
-  },
-  {
-    name: "2",
-    Poids: 80,
-    Calories: 250,
-  },
-  {
-    name: "3",
-    Poids: 80,
-    Calories: 250,
-  },
-  {
-    name: "4",
-    Poids: 80,
-    Calories: 250,
-  },
-  {
-    name: "5",
-    Poids: 80,
-    Calories: 250,
-  },
-  {
-    name: "6",
-    Poids: 80,
-    Calories: 250,
-  },
-  {
-    name: "7",
-    Poids: 80,
-    Calories: 250,
-  },
-];
-
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
       <div className="custom-tooltip">
@@ -69,8 +24,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-const renderLegend = (props) => {
-  const { payload } = props;
+const renderLegend = (content) => {
+  const { payload } = content;
   return (
     <ul>
       <li id="poids">{payload[0].value}</li>
@@ -78,10 +33,9 @@ const renderLegend = (props) => {
     </ul>
   );
 };
-
-// const { position, ...parseActivity } = props.activity;
-
 function HorizontalMainArea(props) {
+	{console.log(props.activity)}
+
 	return (
 		<div className="horizontalmainarea">
 			<h3>Activité quotidienne</h3>
@@ -131,6 +85,15 @@ function HorizontalMainArea(props) {
 			</ResponsiveContainer>
 		</div>
 	);
+}
+
+HorizontalMainArea.propTypes = {
+  activity: PropTypes.arrayOf(PropTypes.shape({
+    day: PropTypes.string,
+    kilogram: PropTypes.number,
+	calories: PropTypes.number,
+	name: PropTypes.number
+  })),
 }
 
 export default HorizontalMainArea;

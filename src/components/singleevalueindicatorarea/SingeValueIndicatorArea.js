@@ -1,5 +1,12 @@
+import PropTypes from "prop-types"
 import React from "react";
 import "./SingeValueIndicatorArea.css";
+
+/**
+ * 
+ * @param {Object} props 
+ * @returns 
+ */
 
 function SingeValueIndicatorArea(props) {
 	return (
@@ -17,6 +24,14 @@ function SingeValueIndicatorArea(props) {
 			</div>
 		</div>
 	);
+}
+
+SingeValueIndicatorArea.propTypes = {
+  category: PropTypes.string,
+  cssClass: PropTypes.string,
+  number: PropTypes.number,
+  svg: PropTypes.string,
+  unit: PropTypes.string
 }
 
 export default SingeValueIndicatorArea;

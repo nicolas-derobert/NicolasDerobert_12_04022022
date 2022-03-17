@@ -8,8 +8,9 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-flow: row nowrap;
           flex-flow: row nowrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -19,8 +20,8 @@ header {
 
 header .header-logo {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 20%;
-          flex: 0 0 20%;
+      -ms-flex: 0 0 10%;
+          flex: 0 0 10%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,6 +33,6 @@ header .header-logo {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  padding-left: 60px;
+  padding-left: 6rem;
 }
 /*# sourceMappingURL=Header.css.map */

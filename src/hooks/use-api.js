@@ -4,6 +4,8 @@ import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
+
+
 export const useApi = ({ url, method, body = null, headers = JSON.stringify({ accept: "*/*" }) }) => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState('');

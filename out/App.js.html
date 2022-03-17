@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import * as React from "react";
+import "./App.css";
+import GlobalLayout from "./layouts/globallayout/GlobalLayout";
+import HorizontalMainArea from "./layouts/horizontalmainarea/HorizontalMainArea";
+import HorizontalSecondaryArea from "./layouts/horizontalsecondaryarea/HorizontalSecondaryArea";
+import VerticalArea from "./layouts/verticalarrea/VerticalArea";
+import { useState, useEffect, useCallback } from "react";
+import { useApi } from "./hooks/use-api";
+import "./App.css";
+
+function App() {
+	/**
+	 * @type {number}
+	 * @const
+	 */
+	const userId = 18;
+	const slash = "/";
+	const url = "http://localhost:3000/user/";
+	const activityParameter = "activity";
+	const averageSessionsParameter = "average-sessions";
+	const performanceParameter = "performance";
+	const actualUrlUserInfo = url + userId;
+	const mockedUrlUserInfo = "datauser.json";
+	const actualUrlUserActivity = url + userId + slash + activityParameter;
+	const mockedUrlUserActivity = "datauseractivity.json";
+	const actualUrlUserSession = url + userId + slash + averageSessionsParameter;
+	const mockedUrlUserSession = "datauseraveragesessions.json";
+	const actualUrlUserPerformance = url + userId + slash + performanceParameter;
+	const mockedUrlUserPerformance = "datauserperformance.json";
+
+	let urlUserInfo = actualUrlUserInfo;
+	let urlUserActivity = actualUrlUserActivity;
+	let urlUserSession = actualUrlUserSession;
+	let urlUserPerformance = actualUrlUserPerformance;
+
+	/**
+	 *
+	 * @type {number}
+	 * @const
+	 */
+	//  ${slash}
+	const {
+		response: userResponse,
+		loading: userLoading,
+		error: userError,
+	} = useApi({ method: "get", url: `${urlUserInfo}` });
+	console.log(userResponse);
+	const {
+		response: activityResponse,
+		loading: activityLoading,
+		error: activityError,
+	} = useApi({ method: "get", url: ` ${urlUserActivity}` });
+	const {
+		response: averageSessionsResponse,
+		loading: averageSessionsLoading,
+		error: averageSessionsError,
+	} = useApi({
+		method: "get",
+		url: ` ${urlUserSession}`,
+	});
+	const {
+		response: performanceResponse,
+		loading: performanceLoading,
+		error: performanceError,
+	} = useApi({ method: "get", url: ` ${urlUserPerformance}` });
+	// const [data, setData] = useState([]);
+	const [userData, setUserData] = useState([]);
+	const [activityData, setActivityData] = useState([]);
+	const [averageSessionsData, setSessionsData] = useState([]);
+	const [performanceData, setPerformanceData] = useState([]);
+	const [userDataScore, setUserDataScore] = useState("");
+	const [userDataScoreValue, setUserDataScoreValue] = useState("");
+
+	useEffect(() => {
+		if (userResponse !== null) {
+			let userScoreResponseValue =
+				(userResponse.data.score * 100).toString() + "%";
+			let userScoreResponse = [
+				{ value: userResponse.data.score * 100 },
+				{ value: 100 - userResponse.data.score * 100 },
+			];
+			console.log(userScoreResponse);
+			setUserData(userResponse);
+			setUserDataScoreValue(userScoreResponseValue);
+			setUserDataScore(userScoreResponse);
+		}
+		if (activityResponse !== null) {
+			let activityResponseFormated = activityResponse.data.sessions;
+			for (let i = 0; i &lt; activityResponseFormated.length; i++) {
+				activityResponseFormated[i].name = i + 1;
+			}
+			setActivityData(activityResponseFormated);
+		}
+		if (averageSessionsResponse !== null) {
+			const letterDay = ["L", "M", "M", "J", "V", "S", "D"];
+			let averageSessionsResponseFormated =
+				averageSessionsResponse.data.sessions;
+			for (let i = 0; i &lt; averageSessionsResponse.data.sessions.length; i++) {
+				averageSessionsResponseFormated[i].day = letterDay[i];
+			}
+			setSessionsData(averageSessionsResponseFormated);
+		}
+		if (performanceResponse !== null) {
+			const type = [
+				"Intensité",
+				"Vitesse",
+				"Force",
+				"Endurance",
+				"Energie",
+				"Cardio",
+			];
+			let performanceResponseFormated = performanceResponse.data.data;
+			for (var i = 0; i &lt; performanceResponse.data.data.length; i++) {
+				performanceResponseFormated[i].type = type[i];
+			}
+			setPerformanceData(performanceResponseFormated);
+		}
+	}, [
+		userResponse,
+		activityResponse,
+		averageSessionsResponse,
+		performanceResponse,
+	]);
+
+	return (
+		&lt;div className="App">
+			&lt;GlobalLayout>
+				{!userLoading &amp;&amp; (
+					&lt;>
+						&lt;h1 className="titlearea">
+							{"Bonjour "}
+							&lt;span className="firstname">
+								{userData.data.userInfos.firstName}
+							&lt;/span>
+						&lt;/h1>
+						&lt;p className="congratsarea">
+							Félicitation ! Vous avez explosé vos objectifs hier 👏
+						&lt;/p>
+						{!activityLoading &amp;&amp; &lt;HorizontalMainArea activity={activityData} />}
+
+						{!userLoading &amp; !averageSessionsLoading ? (
+							&lt;HorizontalSecondaryArea
+								score={userDataScore}
+								scorevalue={userDataScoreValue}
+								sessions={averageSessionsData}
+								performance={performanceData}
+							/>
+						) : null}
+						{!userLoading &amp;&amp; (
+							&lt;VerticalArea keydata={userData.data.keyData}>&lt;/VerticalArea>
+						)}
+					&lt;/>
+				)}
+				{userLoading &amp;&amp; &lt;div>Chargement&lt;/div>}
+			&lt;/GlobalLayout>
+		&lt;/div>
+	);
+}
+
+export default App;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#NavButton">NavButton</a></li><li><a href="global.html#SingeValueIndicatorArea">SingeValueIndicatorArea</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Mar 17 2022 10:45:01 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -2,13 +2,12 @@
 @import "../../assets/Styles/mixin.scss";
 
 .horizontalnavbar {
-	flex: 0 0 60%;
+	flex: 0 0 80%;
 	font-size: 2.4rem;
 	margin: 10px;
-	text-transform: uppercase;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	ul {
 		padding: 0;

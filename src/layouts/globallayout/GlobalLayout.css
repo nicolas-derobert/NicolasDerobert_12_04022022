@@ -85,9 +85,8 @@
 }
 
 .globallayout main .content {
-  margin: 0;
-  width: 85%;
-  margin-left: 2.5%;
+  margin: 0 7.5%;
+  width: 75%;
   display: -ms-grid;
   display: grid;
   gap: 5%;

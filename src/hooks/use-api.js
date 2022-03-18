@@ -1,34 +1,47 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import axios from 'axios';
+import axios from "axios";
 
 // axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
+	
+/**
+ * Use api function
+ * @param {Object} Obj description
+ * @param {string} Obj.url url of api call
+ * * @param {string} Obj.method method 
+ * @param {string} Obj.body body of call
+ * @param {string} Obj.headers headers of call
+ * @returns {Object}
+ */
+export const useApi = ({
+	url,
+	method,
+	body = null,
+	headers = JSON.stringify({ accept: "*/*" }),
+}) => {
+	const [response, setResponse] = useState(null);
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(true);
 
+	const fetchData = () => {
+		axios[method](url, JSON.parse(headers), JSON.parse(body))
+			.then((res) => {
+				setResponse(res.data);
+			})
+			.catch((err) => {
+				setError(err);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	};
 
-export const useApi = ({ url, method, body = null, headers = JSON.stringify({ accept: "*/*" }) }) => {
-    const [response, setResponse] = useState(null);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
+	useEffect(() => {
+		fetchData();
+	}, [method, url, body, headers]);
 
-    const fetchData = () => {
-        axios[method](url, JSON.parse(headers), JSON.parse(body))
-            .then((res) => {
-                setResponse(res.data);
-            })
-            .catch((err) => {
-                setError(err);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, [method, url, body, headers]);
-
-    return { response, error, loading };
+	return { response, error, loading };
 };
 
 // export const getUserData = ({ url, method, body = null, headers = null }) => {
@@ -57,8 +70,6 @@ export const useApi = ({ url, method, body = null, headers = JSON.stringify({ ac
 // };
 // export default useApi;
 
-
-
 // const mockedApi = ({ url, method, body = null, headers = null }) => {
 //     const [response, setResponse] = useState(null);
 //     const [error, setError] = useState('');
@@ -85,7 +96,6 @@ export const useApi = ({ url, method, body = null, headers = JSON.stringify({ ac
 // };
 
 // export {mockedApi};
-
 
 // var axios = require("axios");
 // var MockAdapter = require("axios-mock-adapter");

@@ -7,47 +7,104 @@ import VerticalArea from "./layouts/verticalarrea/VerticalArea";
 import { useState, useEffect } from "react";
 import { useApi } from "./hooks/use-api";
 import "./App.css";
-
+/**
+ * Component for showing navigation buttons
+ *
+ * @component
+ */
 function App() {
 	/**
 	 * @type {number}
 	 * @const
 	 */
 	const userId = 18;
+	/**
+	 * @type {string}
+	 * @const
+	 */
 	const slash = "/";
+	/**
+	 * @type {string}
+	 * @const
+	 */
 	const url = "http://localhost:3000/user/";
+	/**
+	 * @type {string}
+	 * @const
+	 */
 	const activityParameter = "activity";
+	/**
+	 * @type {string}
+	 * @const
+	 */
 	const averageSessionsParameter = "average-sessions";
+	/**
+	 * @type {string}
+	 * @const
+	 */
 	const performanceParameter = "performance";
+	/**
+	 * - url used for api call to get user data
+	 * @type {string}
+	 * @const
+	 */
 	const actualUrlUserInfo = url + userId;
+	/**
+	 * - mocked url used for api call to get user data
+	 * @type {string}
+	 * @const
+	 */
 	const mockedUrlUserInfo = "datauser.json";
+	/**
+	 * - url used for api call to get activity data
+	 * @type {string}
+	 * @const
+	 */
 	const actualUrlUserActivity = url + userId + slash + activityParameter;
+	/**
+	 * -mocked url used for api call to get activity data
+	 * @type {string}
+	 * @const
+	 */
 	const mockedUrlUserActivity = "datauseractivity.json";
+	/**
+	 * - url used for api call to get sessions data
+	 * @type {string}
+	 * @const
+	 */
 	const actualUrlUserSession = url + userId + slash + averageSessionsParameter;
+	/**
+	 * -mocked url used for api call to get sessions data
+	 * @type {string}
+	 * @const
+	 */
 	const mockedUrlUserSession = "datauseraveragesessions.json";
+	/**
+	 *  - url used for api call to get performance data
+	 * @type {string}
+	 * @const
+	 */
 	const actualUrlUserPerformance = url + userId + slash + performanceParameter;
+	/**
+	 * - mocked url used for api call to get performance data
+	 * @type {string}
+	 * @const
+	 */
 	const mockedUrlUserPerformance = "datauserperformance.json";
 
+	
 	let urlUserInfo = actualUrlUserInfo;
 	let urlUserActivity = actualUrlUserActivity;
 	let urlUserSession = actualUrlUserSession;
 	let urlUserPerformance = actualUrlUserPerformance;
 
-	/**
- * Component for showing navigation buttons
- *
- * @component
- */
-/**
- * Object with api feed-back
- *  * @typedef {userResponse: Object, userLoading: string, error: number}
- */
+
 	const {
 		response: userResponse,
 		loading: userLoading,
 		error: userError,
 	} = useApi({ method: "get", url: `${urlUserInfo}` });
-	console.log(userError);
+
 	const {
 		response: activityResponse,
 		loading: activityLoading,
@@ -76,26 +133,51 @@ function App() {
 
 	useEffect(() => {
 		if (userResponse !== null) {
-			let userScoreResponseValue =
+			/**
+			 * - Score transformed in percent
+			 * @type {string}
+			 * @const
+			 */
+			const userScoreResponseValue =
 				(userResponse.data.score * 100).toString() + "%";
-			let userScoreResponse = [
+			/**
+			 * - Score values array
+			 * @type {Array}
+			 * @const
+			 */
+			const userScoreResponse = [
 				{ value: userResponse.data.score * 100 },
 				{ value: 100 - userResponse.data.score * 100 },
 			];
-			console.log(userScoreResponse);
 			setUserData(userResponse);
 			setUserDataScoreValue(userScoreResponseValue);
 			setUserDataScore(userScoreResponse);
 		}
 		if (activityResponse !== null) {
-			let activityResponseFormated = activityResponse.data.sessions;
+			/**
+			 * - Object with activity data
+			 * @type {Object}
+			 * @const
+			 */
+			const activityResponseFormated = activityResponse.data.sessions;
 			for (let i = 0; i < activityResponseFormated.length; i++) {
 				activityResponseFormated[i].dayNumber = i + 1;
 			}
 			setActivityData(activityResponseFormated);
 		}
 		if (averageSessionsResponse !== null) {
+			/**
+			 * Array with letter of the week
+			 * @type {Array}
+			 * @const
+			 */
 			const letterDay = ["L", "M", "M", "J", "V", "S", "D"];
+
+			/**
+			 * Object with sessions data
+			 * @type {Object}
+			 * @const
+			 */
 			let averageSessionsResponseFormated =
 				averageSessionsResponse.data.sessions;
 			for (let i = 0; i < averageSessionsResponse.data.sessions.length; i++) {
@@ -104,6 +186,11 @@ function App() {
 			setSessionsData(averageSessionsResponseFormated);
 		}
 		if (performanceResponse !== null) {
+			/**
+			 * Array with type of features
+			 * @type {string}
+			 * @const
+			 */
 			const type = [
 				"Intensité",
 				"Vitesse",

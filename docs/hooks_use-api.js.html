@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> layouts/verticalarrea/VerticalArea.js</title>
+  <title> hooks/use-api.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>layouts/verticalarrea/VerticalArea.js</h1>
+                    <h1>hooks/use-api.js</h1>
                 </header>
                 
 
@@ -89,42 +89,120 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import SingeValueIndicatorArea from "../../components/singleevalueindicatorarea/SingeValueIndicatorArea";
-import "./VerticalArea.css";
-import calorieLogo from"../../assets/images/calorie.svg"
-import proteinLogo from"../../assets/images/protein.svg"
-import carbohydrateLogo from"../../assets/images/carbohydrate.svg"
-import lipidLogo from"../../assets/images/lipid.svg"
-import PropTypes from "prop-types";
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from "react";
+
+import axios from "axios";
+
+// axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+
+	
 /**
- * Component for showing navigation buttons
- *
- * @component
+ * Use api function
+ * @param {Object} Obj description
+ * @param {string} Obj.url url of api call
+ * * @param {string} Obj.method method 
+ * @param {string} Obj.body body of call
+ * @param {string} Obj.headers headers of call
+ * @returns {Object}
  */
+export const useApi = ({
+	url,
+	method,
+	body = null,
+	headers = JSON.stringify({ accept: "*/*" }),
+}) => {
+	const [response, setResponse] = useState(null);
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(true);
 
-function VerticalArea(props) {
-	return (	
+	const fetchData = () => {
+		axios[method](url, JSON.parse(headers), JSON.parse(body))
+			.then((res) => {
+				setResponse(res.data);
+			})
+			.catch((err) => {
+				setError(err);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	};
 
-		&lt;div className="verticalarea">
-			&lt;SingeValueIndicatorArea number={props.keydata.calorieCount} unit="Kcal" category="Calories" svg={calorieLogo} cssClass="calorie" />
-			&lt;SingeValueIndicatorArea number={props.keydata.proteinCount} unit="g" category="Proteines" svg={proteinLogo} cssClass="protein"/>
-			&lt;SingeValueIndicatorArea number={props.keydata.carbohydrateCount} unit="g" category="Glucides" svg={carbohydrateLogo} cssClass="carbohydrate"/>
-			&lt;SingeValueIndicatorArea number={props.keydata.lipidCount} unit="g" category="Lipides" svg={lipidLogo} cssClass="lipid"/>
-		&lt;/div>
-	);
-}
+	useEffect(() => {
+		fetchData();
+	}, [method, url, body, headers]);
 
-VerticalArea.propTypes = {
-  keydata: PropTypes.shape({
-    calorieCount: PropTypes.any,
-    carbohydrateCount: PropTypes.any,
-    lipidCount: PropTypes.any,
-    proteinCount: PropTypes.any
-  })
-}
+	return { response, error, loading };
+};
 
-export default VerticalArea;
+// export const getUserData = ({ url, method, body = null, headers = null }) => {
+//     const [response, setResponse] = useState(null);
+//     const [error, setError] = useState('');
+//     const [loading, setLoading] = useState(true);
+
+//     const fetchData = () => {
+//         axios[method](url, JSON.parse(headers), JSON.parse(body))
+//             .then((res) => {
+//                 setResponse(res.data);
+//             })
+//             .catch((err) => {
+//                 setError(err);
+//             })
+//             .finally(() => {
+//                 setLoading(false);
+//             });
+//     };
+
+//     useEffect(() => {
+//         fetchData();
+//     }, [method, url, body, headers]);
+
+//     return { response, error, loading };
+// };
+// export default useApi;
+
+// const mockedApi = ({ url, method, body = null, headers = null }) => {
+//     const [response, setResponse] = useState(null);
+//     const [error, setError] = useState('');
+//     const [loading, setloading] = useState(true);
+
+//     const fetchData = () => {
+//         axios[method](url, JSON.parse(headers), JSON.parse(body))
+//             .then((res) => {
+//                 setResponse(res.data);
+//             })
+//             .catch((err) => {
+//                 setError(err);
+//             })
+//             .finally(() => {
+//                 setloading(false);
+//             });
+//     };
+
+//     useEffect(() => {
+//         fetchData();
+//     }, [method, url, body, headers]);
+
+//     return { response, error, loading };
+// };
+
+// export {mockedApi};
+
+// var axios = require("axios");
+// var MockAdapter = require("axios-mock-adapter");
+
+// // This sets the mock adapter on the default instance
+// var mock = new MockAdapter(axios);
+
+// // Mock any GET request to /users
+// // arguments for reply are (status, data, headers)
+// mock.onGet("/users").reply(200, {
+//   users: [{ id: 1, name: "John Smith" }],
+// });
+
+// axios.get("/users").then(function (response) {
+//   console.log(response.data);
+// });
 </code></pre>
         </article>
     </section>

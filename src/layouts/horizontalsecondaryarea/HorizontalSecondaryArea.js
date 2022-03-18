@@ -88,7 +88,7 @@ function HorizontalSecondaryArea(props) {
 			<SquareChartArea>
 				<div className="squarechartarea pie">
 					<div className="whitecircle">
-						<p>{props.scorevalue} de votre objectif</p>
+						<p className="value">{props.scorevalue}</p><p> de votre objectif</p>
 					</div>
 					<ResponsiveContainer width="100%" height="100%">
 						<PieChart>

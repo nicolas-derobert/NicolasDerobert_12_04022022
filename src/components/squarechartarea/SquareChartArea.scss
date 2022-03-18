@@ -17,19 +17,30 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		display: flex;
-		flex-flow: row;
+		flex-flow:column;
 		justify-content: center;
 		align-items: center;
+		p{
+			margin: 0;
+			color: $seventhly-color;
+			font-size: 1.4rem;
+			font-weight: 500;
+
+		}
+		.value{
+			font-size: 2.6rem;
+			color: $black-color;
+			font-weight: 700;
+
+
+		}
 	}
 	.recharts-sector {
-		// stroke-linejoin: round;
-		// stroke-width: 7px;
 		border-radius: 50%;
 	  }
 	&.line {
 		background-color: $primary-color;
 		h3 {
-			// position: absolute;
 			width: 60%;
 			margin: 10px 20px;
 			margin-right: auto;

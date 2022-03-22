@@ -25,17 +25,17 @@
   import Component0 from '../src/App.js';
 reactComponents['App'] = Component0;
 
-import Component1 from '../src/layouts/horizontalmainarea/HorizontalMainArea.js';
-reactComponents['HorizontalMainArea'] = Component1;
+import Component1 from '../src/layouts/footer/Footer.js';
+reactComponents['Footer'] = Component1;
 
-import Component2 from '../src/layouts/footer/Footer.js';
-reactComponents['Footer'] = Component2;
+import Component2 from '../src/layouts/globallayout/GlobalLayout.js';
+reactComponents['GlobalLayout'] = Component2;
 
-import Component3 from '../src/layouts/globallayout/GlobalLayout.js';
-reactComponents['GlobalLayout'] = Component3;
+import Component3 from '../src/layouts/header/Header.js';
+reactComponents['Header'] = Component3;
 
-import Component4 from '../src/layouts/header/Header.js';
-reactComponents['Header'] = Component4;
+import Component4 from '../src/layouts/horizontalmainarea/HorizontalMainArea.js';
+reactComponents['HorizontalMainArea'] = Component4;
 
 import Component5 from '../src/layouts/horizontalsecondaryarea/HorizontalSecondaryArea.js';
 reactComponents['HorizontalSecondaryArea'] = Component5;

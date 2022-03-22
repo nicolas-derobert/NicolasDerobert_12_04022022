@@ -3,17 +3,19 @@
     "tags": {
       "allowUnknownTags": true,
       "dictionaries": ["jsdoc", "closure"],
-      "allowUnknownTags": ["component"] //or true
+      "allowUnknownTags": ["component"] 
     },
     "source": {
       "include": ["src"],
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(^|\\/|\\\\)_"
     },
-    "plugins": ["plugins/markdown", "better-docs/component"],
+    "plugins": ["plugins/markdown", "better-docs/component","node_modules/better-docs/typescript","node_modules/better-docs/category"],
     "templates": {
       "better-docs": {
-        "name": "My React components"
+        "name": "Sportsee",
+        "logo": "../src/assets/images/logo.svg",
+        "title": "Sportsee Project Documentaion"
       }
     },
     "opts": {
@@ -21,6 +23,5 @@
       "recurse": true,
       "readme": "README.md",
       "template": "node_modules/better-docs"
-
     }
   }

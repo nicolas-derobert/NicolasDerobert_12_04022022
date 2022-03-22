@@ -1,6 +1,7 @@
 .singlevalueindicatorarea {
   height: 120px;
   width: 100%;
+  min-width: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,6 +17,12 @@
           align-items: center;
   border-radius: 4px;
   background-color: #FBFBFB;
+}
+
+@media screen and (max-width: 1199.98px) {
+  .singlevalueindicatorarea {
+    min-width: none;
+  }
 }
 
 .singlevalueindicatorarea .iconarea {

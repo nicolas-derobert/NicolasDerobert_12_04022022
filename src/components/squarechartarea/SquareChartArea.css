@@ -60,6 +60,18 @@
   margin-right: auto;
 }
 
+.squarechartarea.line .customtooltip {
+  background-color: #FBFBFB;
+  color: #000000;
+  padding: 2px;
+}
+
+.squarechartarea.line .customtooltip p {
+  font-weight: 500;
+  margin: 1px;
+  padding: 2px;
+}
+
 .squarechartarea.radar {
   display: -webkit-box;
   display: -ms-flexbox;

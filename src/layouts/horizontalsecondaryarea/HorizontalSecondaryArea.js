@@ -17,18 +17,26 @@ import {
 	Cell,
 	RadarChart,
 } from "recharts";
-
+/**
+ * Function to customize Recharts Tooltip
+ * @category Recharts customization
+ * @function CustomTooltipLine
+ * @param {Object} Obj Object that contain parameters that customize Tooltip
+ * @param {boolean} Obj.active If set true, the tooltip is displayed
+ * @param {Object} Obj.payload The source data of the content to be displayed in the tooltip
+ * @returns {string}
+ */
 const CustomTooltipLine = ({ active, payload, label }) => {
 	if (active && payload && payload.length) {
-	  return (
-		<div className="custom-tooltip">
-		  <p className="label">{` ${payload[0].value} min`}</p>
-		</div>
-	  );
+		return (
+			<div className="customtooltip">
+				<p className="label">{` ${payload[0].value} min`}</p>
+			</div>
+		);
 	}
-  
+
 	return null;
-  };
+};
 
 /**
  * Component for showing all graphs displayed in the second horizontal bar
@@ -37,7 +45,6 @@ const CustomTooltipLine = ({ active, payload, label }) => {
  */
 function HorizontalSecondaryArea(props) {
 	const COLORS = ["#FF0101", "#FBFBFB", "#FFBB28", "#FF8042"];
-	// const COLORS = ["#FF0101", "#FFBB28", "#FFBB28", "#FF8042"];
 	return (
 		<div className="horizontalsecondaryarea">
 			<SquareChartArea>
@@ -53,16 +60,13 @@ function HorizontalSecondaryArea(props) {
 								bottom: 5,
 							}}
 						>
-							{/* <CartesianGrid strokeDasharray="3 3" /> */}
 							<XAxis
 								dataKey="day"
 								axisLine={false}
 								tickLine={false}
 								stroke="#ffffff"
 							/>
-							{/* <YAxis /> */}
 							<Tooltip content={<CustomTooltipLine />} />
-							{/* <Legend /> */}
 							<Line
 								type="monotone"
 								dataKey="sessionLength"
@@ -82,9 +86,8 @@ function HorizontalSecondaryArea(props) {
 							outerRadius="80%"
 							data={props.performance}
 						>
-							<PolarGrid />
+							<PolarGrid radialLines={false} />
 							<PolarAngleAxis dataKey="type" tick={{ fill: "#FFFFFF" }} />
-							{/* <PolarRadiusAxis angle={30} domain={[0, 150]} /> */}
 							<Radar
 								name=""
 								dataKey="value"
@@ -99,7 +102,8 @@ function HorizontalSecondaryArea(props) {
 			<SquareChartArea>
 				<div className="squarechartarea pie">
 					<div className="whitecircle">
-						<p className="value">{props.scorevalue}</p><p> de votre objectif</p>
+						<p className="value">{props.scorevalue}</p>
+						<p> de votre objectif</p>
 					</div>
 					<ResponsiveContainer width="100%" height="100%">
 						<PieChart>
@@ -112,14 +116,12 @@ function HorizontalSecondaryArea(props) {
 								cornerRadius={40}
 								paddingAngle={5}
 								dataKey="value"
-								// startAngle={0}
 							>
 								{props.score.map((entry, index) => (
 									<Cell
 										key={`cell-${index}`}
 										fill={COLORS[index % COLORS.length]}
 										strokeWidth="0"
-										// style={{borderRadius:"50%"}}
 									/>
 								))}
 							</Pie>
@@ -138,38 +140,42 @@ HorizontalSecondaryArea.propTypes = {
 	performance: PropTypes.arrayOf(
 		PropTypes.shape({
 			/**
-			 * Number related to the Kind of measurement
+			 * Number related to the Kind of measurement (prop)
 			 */
 			kind: PropTypes.number,
 			/**
-			 * Name of measurement
+			 * Name of measurement (prop)
 			 */
 			type: PropTypes.string,
-			/**Measurement */
+			/**
+			 * Measurement  (prop)
+			 * */
 			value: PropTypes.number,
 		})
-	),
+	).isRequired,
 	/**
-	 * Array with two values. The first value is initial value of score. The second value is the result of subtraction of the to the number of 100
+	 * Array with two values.  (prop) The first value is initial value of score. The second value is the result of subtraction of the to the number of 100
 	 */
-	// score: PropTypes.arrayOf(PropTypes.number),
+	score: PropTypes.arrayOf(PropTypes.number),
 	/**
-	 * First value is initial value of score
+	 * First value is initial value of score  (prop)
 	 */
-	scorevalue: PropTypes.string,
-	/**
-	 * Average duration of sessions
+	scorevalue: PropTypes.string.isRequired,
+	/** 
+	 * Average duration of sessions (prop)
 	 */
 	sessions: PropTypes.arrayOf(
 		PropTypes.shape({
-			/**Session duration*/
+			/**
+			 * Session duration  (prop)
+			 * */
 			sessionLength: PropTypes.number,
 			/**
-			 * Letter corresponding to the related day
+			 * Letter corresponding to the related day  (prop)
 			 */
 			day: PropTypes.string,
 		})
-	),
+	).isRequired,
 };
 
 export default HorizontalSecondaryArea;

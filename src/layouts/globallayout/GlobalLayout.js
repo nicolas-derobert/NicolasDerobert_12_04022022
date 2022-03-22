@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import Header from "../header/Header";
-// import Footer from "../../layouts/footer/Footer";
 import "./GlobalLayout.css";
 import VerticalNavBar from "../../components/verticalnavbar/VerticalNavbar";
 import PropTypes from "prop-types";
@@ -28,7 +27,7 @@ function GlobalLayout(props) {
 
 GlobalLayout.propTypes = {
 	/**
-	 * Html node to display as a child
+	 * Html node to display as a child (prop)
 	 */
   children: PropTypes.node.isRequired,
 }

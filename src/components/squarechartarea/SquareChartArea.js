@@ -15,7 +15,7 @@ function SquareChartArea(props) {
 }
 SquareChartArea.propTypes = {
 	/**
-	 * Html node to display as a child
+	 * Html node to display as a child (prop)
 	 */
 	children: PropTypes.node.isRequired,
   }

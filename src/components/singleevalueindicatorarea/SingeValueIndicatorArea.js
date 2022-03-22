@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import React from "react";
 import "./SingeValueIndicatorArea.css";
 
@@ -27,26 +27,26 @@ function SingeValueIndicatorArea(props) {
 }
 
 SingeValueIndicatorArea.propTypes = {
-		/**
-* Type of figure
-*/
-  category: PropTypes.any,
-  //   /**
-// * css class to apply
-// */
-  cssClass: PropTypes.any,//   /**
-// * Value for the figure
-// */
-  number: PropTypes.any,//   /**
-// * Logo in svg format
-// */
-  svg: PropTypes.any,//   /**
-// * Unit of Figure
-// */
-  unit: PropTypes.any
-}
-
-
+	/**
+	 * Type of figure (prop)
+	 */
+	category: PropTypes.any.isRequired,
+	/**
+	 * css class to apply (prop)
+	 */
+	cssClass: PropTypes.any.isRequired,
+	/**
+	 * Value for the figure (prop)
+	 */
+	number: PropTypes.any.isRequired,
+	/**
+	 * Logo in svg format (prop)
+	 */
+	svg: PropTypes.any.isRequired,
+	/**
+	 * Unit of Figure (prop)
+	 */
+	unit: PropTypes.any.isRequired,
+};
 
 export default SingeValueIndicatorArea;
-

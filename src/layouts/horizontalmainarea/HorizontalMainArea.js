@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import React from "react";
 import "./HorizontalMainArea.css";
 import {
@@ -10,33 +10,50 @@ import {
 	Legend,
 	ResponsiveContainer,
 } from "recharts";
+
+/**
+ * Function to customize Recharts Tooltip
+ * @category Recharts customization
+ * @function CustomTooltip
+ * @param {Object} Obj Object that contain parameters that customize Tooltip
+ * @param {boolean} Obj.active If set true, the tooltip is displayed
+ * @param {Object} Obj.payload The source data of the content to be displayed in the tooltip
+ * @returns {string}
+ */
+const CustomTooltip = ({ active, payload }) => {
+	if (active && payload && payload.length) {
+		return (
+			<div className="custom-tooltip">
+				<p className="label">{` ${payload[0].value}Kg`}</p>
+				<p className="label">{` ${payload[1].value}KCal`}</p>
+			</div>
+		);
+	}
+
+	return null;
+};
+/**
+ * Function to customize Recharts legend
+ * @category Recharts customization
+ * @function renderLegend
+ * @param {Object} Obj Object that contain parameters that customize legend
+ * @param {Object} Obj.payload The source data of the content to be displayed in the legend
+ * @returns {string}
+ */
+const renderLegend = (content) => {
+	const { payload } = content;
+	return (
+		<ul>
+			<li id="poids">{payload[0].value}</li>
+			<li id="calorie">{payload[1].value}</li>
+		</ul>
+	);
+};
 /**
  * Component to display main graph of page
  *
  * @component
  */
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="custom-tooltip">
-        <p className="label">{` ${payload[0].value}Kg`}</p>
-        <p className="label">{` ${payload[1].value}KCal`}</p>
-      </div>
-    );
-  }
-
-  return null;
-};
-
-const renderLegend = (content) => {
-  const { payload } = content;
-  return (
-    <ul>
-      <li id="poids">{payload[0].value}</li>
-      <li id="calorie">{payload[1].value}</li>
-    </ul>
-  );
-};
 function HorizontalMainArea(props) {
 	return (
 		<div className="horizontalmainarea">
@@ -90,25 +107,32 @@ function HorizontalMainArea(props) {
 }
 
 HorizontalMainArea.propTypes = {
-/**
- * Array of all required values used to create graph
- */
-  activity: PropTypes.arrayOf(PropTypes.shape({
-    /**
-	 * Day linked to value
-	 */
-	day: PropTypes.string,
 	/**
-	 * Weight in kilogram
+	 * Array of all required values used to create graph
 	 */
-    kilogram: PropTypes.number,
-	/**Calories brûlées */
-	calories: PropTypes.number,
-/**
- * Number related to the day
- */
-	dayNumber: PropTypes.number
-  })),
-}
+	activity: PropTypes.arrayOf(
+		/**
+		 * Object
+		 */
+		PropTypes.shape({
+			/**
+			 * Day linked to value (prop)
+			 */
+			day: PropTypes.string.isRequired,
+			/**
+			 * Weight in kilogram  (prop)
+			 */
+			kilogram: PropTypes.number.isRequired,
+			/**
+			 * Burnt calory (prop)
+			 */
+			calories: PropTypes.number.isRequired,
+			/**
+			 * Number related to the day (prop)
+			 */
+			dayNumber: PropTypes.number.isRequired,
+		})
+	).isRequired,
+};
 
 export default HorizontalMainArea;

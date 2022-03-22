@@ -15,14 +15,10 @@ function NavButton(props) {
 		</div>
 	);
 }
-
 NavButton.propTypes = {
 	/**
-   * Path to the logo in svg format
+   * Path to the logo in svg format  (prop)
    */
-  svg: PropTypes.string
+  svg: PropTypes.string.isRequired,
 }
-
-
-
 export default NavButton;

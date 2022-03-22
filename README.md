@@ -1,20 +1,16 @@
 
-# Sportsee Project.
+# Description
 
+Welcome to SportSee project repository.
+This is where you will find scripts ( Html, css an js).  
+Please note that Sportsee is a React project.  
 
-<img src="../src/assets/images/logo.svg" width="165"/>
+# Prerequis
 
-## Description
-
-Welcome, This is where you will find scripts ( Html, css an js).  Sportsee is a React project.  
- 
-
-## Prerequis
-
-### Plateform
-- [NodeJS (**version 16.4**)](https://nodejs.org/en/)
+## Plateform
+- NodeJS (**version 16.4**)
 - npm
-### Dependancies
+## Dependancies
     "axios": "^0.26.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
@@ -24,16 +20,15 @@ Welcome, This is where you will find scripts ( Html, css an js).  Sportsee is a 
     "recharts": "^2.1.9",
     "web-vitals": "^2.1.4"
 
+## Developpement dependancies 
+    "better-docs": "^2.7.2",
+    "jsdoc": "^3.6.10"
 
-### Front-end
-All packages required are in package.json file.
-
-### Api
+## Api
 To use the Sportsee project you nee an Api.
-This one is awailable there : [Micro Api](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git).
+This one is awailable [there](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git).
 
-## How to Install and Run the Project
-
+# How to Install and Run the Project ?
 1. Fork the repository
 2. Clone it on your computer.
 3. Install with `npm install`
@@ -41,7 +36,7 @@ This one is awailable there : [Micro Api](https://github.com/OpenClassrooms-Stud
 5. Runs the app in the development mode.\
 6. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## How to Use the Project
+## How to Use the Project ?
 - Add your scripts
 - Commit & Push
 - Create a pull request

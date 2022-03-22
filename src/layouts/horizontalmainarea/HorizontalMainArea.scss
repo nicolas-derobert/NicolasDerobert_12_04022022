@@ -1,62 +1,57 @@
 @import "../../assets/Styles/variables.scss";
 @import "../../assets/Styles/mixin.scss";
 .horizontalmainarea {
-	
 	display: flex;
 	flex-direction: column;
 	background-color: $secondary-color;
 	border-radius: 4px;
-	.recharts-legend-wrapper{
-height: 0!important;
+	.recharts-legend-wrapper {
+		height: 0 !important;
 	}
 	h3 {
-		margin:15px 0 10px 25px ;
-		font-size: 1.5rem;;
+		margin: 15px 0 10px 25px;
+		font-size: 1.5rem;
 	}
-		ul {
-			position: absolute;
-			top: -50px;
-			width: 50%;
-			left: 40%;
-			display: flex;
-			flex-flow: row nowrap;
-			align-content: center;
-			justify-content: space-around;
-			list-style: none;
+	ul {
+		position: absolute;
+		top: -50px;
+		width: 50%;
+		left: 40%;
+		display: flex;
+		flex-flow: row nowrap;
+		align-content: center;
+		justify-content: space-around;
+		list-style: none;
 
-			li {
-				color: $seventhly-color;
-				margin: 0px;
-				font-size: 1.4rem;
+		li {
+			color: $seventhly-color;
+			margin: 0px;
+			font-size: 1.4rem;
+			&::before {
+				position: relative;
+				content: "•";
+				display: inline-block;
+				width: 1em;
+				left: 0.3em;
+				top: 0.7rem;
+				font-size: 2.5em;
+				line-height: 2.5rem;
+			}
+
+			&#poids {
 				&::before {
-					position: relative;
 					content: "•";
-					display: inline-block;
-					width: 1em;
-					left: 0.3em;
-					top: 0.7rem;
-					font-size: 2.5em;
-					line-height: 2.5rem;
+					color: $black-color;
 				}
-
-				&#poids {
-					&::before {
-						content: "•";
-						color: $black-color;
-					}
-				}
-				&#calorie {
-					&::before {
-						content: "•";
-						color: $primary-color;
-					}
+			}
+			&#calorie {
+				&::before {
+					content: "•";
+					color: $primary-color;
 				}
 			}
 		}
-	
-
-	//   }
-
+	}
 
 	.custom-tooltip {
 		background-color: $primary-color;
@@ -66,21 +61,4 @@ height: 0!important;
 			padding: 5px;
 		}
 	}
-	// BarChart {
-	// Bar {
-	// 	fill: $fourthly-color;
-	// }
-	// Bar[dataKey="pv"] {
-	// 	fill: $primary-color;
-	// }
-	// #pv{
-	// 	fill: $primary-color;
-	// }
-	// }
-	//     <Bar dataKey="pv" fill="#8884d8" minPointSize={5}>
-	//     <LabelList dataKey="name" content={renderCustomizedLabel} />
-	// </Bar>
-	// <Bar dataKey="uv" fill="#82ca9d" minPointSize={10} />
-	// </BarChart>
-	// background-color: bisque;
 }

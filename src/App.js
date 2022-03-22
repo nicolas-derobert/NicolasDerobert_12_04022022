@@ -91,23 +91,60 @@ function App() {
 	 * @const
 	 */
 	const mockedUrlUserPerformance = "datauserperformance.json";
-
+	/**
+	 * - variable to set actual url or mocked url for user info
+	 * @type {string}
+	 * @var
+	 */
 	let urlUserInfo = actualUrlUserInfo;
+	/**
+	 * - variable to set actual url or mocked url for activity
+	 * @type {string}
+	 * @var
+	 */
 	let urlUserActivity = actualUrlUserActivity;
+
+	/**
+	 * - variable to set actual url or mocked url for sessions
+	 * @type {string}
+	 * @var
+	 */
 	let urlUserSession = actualUrlUserSession;
+	/**
+	 * - variable to set actual url or mocked url for performance
+	 * @type {string}
+	 * @var
+	 */
 	let urlUserPerformance = actualUrlUserPerformance;
 
+	/**
+ * @typedef {object} DestructuredObjectApiResponseForUser
+ * @property {string} userResponse
+ * @property {boolean} userLoadingResponse
+ * @property {string} userErrorResponse
+ */
 	const {
 		response: userResponse,
 		loading: userLoadingResponse,
 		error: userErrorResponse,
 	} = useApi({ method: "get", url: `${urlUserInfo}` });
-
+	/**
+ * @typedef {object} DestructuredObjectApiResponseForActivity
+ * @property {string} activityResponse
+ * @property {boolean} activityLoadingResponse
+ * @property {string} activityErrorResponse
+ */
 	const {
 		response: activityResponse,
 		loading: activityLoadingResponse,
 		error: activityErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserActivity}` });
+		/**
+ * @typedef {object} DestructuredObjectApiResponseForSession
+ * @property {string} averageSessionsResponse
+ * @property {boolean} averageSessionsLoadingResponse
+ * @property {string} averageSessionsErrorResponse
+ */
 	const {
 		response: averageSessionsResponse,
 		loading: averageSessionsLoadingResponse,
@@ -116,12 +153,17 @@ function App() {
 		method: "get",
 		url: ` ${urlUserSession}`,
 	});
+		/**
+ * @typedef {object} DestructuredObjectApiResponseForPerformance
+ * @property {string} performanceResponse
+ * @property {boolean} performanceLoadingResponse
+ * @property {string} performanceErrorResponse
+ */
 	const {
 		response: performanceResponse,
 		loading: performanceLoadingResponse,
 		error: performanceErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserPerformance}` });
-	// const [data, setData] = useState([]);
 	const [userLoading, setUserLoading] = useState(true);
 	const [activityLoading, setActivityLoading] = useState(true);
 	const [averageSessionsLoading, setAverageSessionsLoading] = useState(true);
@@ -137,7 +179,7 @@ function App() {
 	const [userDataScore, setUserDataScore] = useState("");
 	const [userDataScoreValue, setUserDataScoreValue] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-const[globalLoading,setGlobalLoading] =useState(false)
+	const [globalLoading, setGlobalLoading] = useState(false);
 
 	useEffect(() => {
 		let message = "";
@@ -237,8 +279,14 @@ const[globalLoading,setGlobalLoading] =useState(false)
 			setPerformanceLoading(performanceLoadingResponse);
 			setPerformanceData(performanceResponseFormated);
 		}
-		if(!userLoadingResponse & !activityLoadingResponse & !averageSessionsLoadingResponse & !performanceLoadingResponse){setGlobalLoading(true)}
-		
+		if (
+			!userLoadingResponse &
+			!activityLoadingResponse &
+			!averageSessionsLoadingResponse &
+			!performanceLoadingResponse
+		) {
+			setGlobalLoading(true);
+		}
 	}, [
 		userResponse,
 		activityResponse,
@@ -258,71 +306,43 @@ const[globalLoading,setGlobalLoading] =useState(false)
 	return (
 		<div className="App">
 			<GlobalLayout>
-				
-				
-				{ !errorMessage ? (globalLoading ?(
-					<>
-						<h1 className="titlearea">
-							{"Bonjour "}
-							<span className="firstname">
-								{userData.data.userInfos.firstName}
-							</span>
-						</h1>
-						<p className="congratsarea">
-							Félicitation ! Vous avez explosé vos objectifs hier 👏
-						</p>
-						{!activityLoading && <HorizontalMainArea activity={activityData} />}
+				{!errorMessage ? (
+					globalLoading ? (
+						<>
+							<h1 className="titlearea">
+								{"Bonjour "}
+								<span className="firstname">
+									{userData.data.userInfos.firstName}
+								</span>
+							</h1>
+							<p className="congratsarea">
+								Félicitation ! Vous avez explosé vos objectifs hier 👏
+							</p>
+							{!activityLoading && (
+								<HorizontalMainArea activity={activityData} />
+							)}
 
-						{!userLoading & !averageSessionsLoading & !performanceLoading ? (
-							<HorizontalSecondaryArea
-								score={userDataScore}
-								scorevalue={userDataScoreValue}
-								sessions={averageSessionsData}
-								performance={performanceData}
-							/>
-						) : null}
-						{!userLoading && (
-							<VerticalArea keydata={userData.data.keyData}></VerticalArea>
-						)}
-					</>
-				): <div className="uploading">Chargement des données</div>):<div className="error">{errorMessage}</div>}
-				{/* {userLoading && <div>Chargement</div>} */}
+							{!userLoading & !averageSessionsLoading & !performanceLoading ? (
+								<HorizontalSecondaryArea
+									score={userDataScore}
+									scorevalue={userDataScoreValue}
+									sessions={averageSessionsData}
+									performance={performanceData}
+								/>
+							) : null}
+							{!userLoading && (
+								<VerticalArea keydata={userData.data.keyData}></VerticalArea>
+							)}
+						</>
+					) : (
+						<div className="uploading">Chargement des données</div>
+					)
+				) : (
+					<div className="error">{errorMessage}</div>
+				)}
 			</GlobalLayout>
 		</div>
 	);
-	// return (
-	// 	<div className="App">
-	// 		<GlobalLayout>
-	// 			{!userLoading && (
-	// 				<>
-	// 					<h1 className="titlearea">
-	// 						{"Bonjour "}
-	// 						<span className="firstname">
-	// 							{userData.data.userInfos.firstName}
-	// 						</span>
-	// 					</h1>
-	// 					<p className="congratsarea">
-	// 						Félicitation ! Vous avez explosé vos objectifs hier 👏
-	// 					</p>
-	// 					{!activityLoading && <HorizontalMainArea activity={activityData} />}
-
-	// 					{!userLoading & !averageSessionsLoading & !performanceLoading ? (
-	// 						<HorizontalSecondaryArea
-	// 							score={userDataScore}
-	// 							scorevalue={userDataScoreValue}
-	// 							sessions={averageSessionsData}
-	// 							performance={performanceData}
-	// 						/>
-	// 					) : null}
-	// 					{!userLoading && (
-	// 						<VerticalArea keydata={userData.data.keyData}></VerticalArea>
-	// 					)}
-	// 				</>
-	// 			)}
-	// 			{userLoading && <div>Chargement</div>}
-	// 		</GlobalLayout>
-	// 	</div>
-	// );
 }
 
 export default App;

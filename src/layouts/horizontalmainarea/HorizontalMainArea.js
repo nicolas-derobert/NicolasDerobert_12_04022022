@@ -4,7 +4,7 @@ import "./HorizontalMainArea.css";
 import {
 	BarChart,
 	Bar,
-		XAxis,
+	XAxis,
 	CartesianGrid,
 	Tooltip,
 	Legend,
@@ -60,7 +60,7 @@ function HorizontalMainArea(props) {
 							fill: "#9B9EAC",
 						}}
 					></XAxis>
-					<Tooltip content={<CustomTooltip />} />{" "}
+					<Tooltip content={<CustomTooltip />} />
 					<Legend
 						verticalAlign="top"
 						align="right"

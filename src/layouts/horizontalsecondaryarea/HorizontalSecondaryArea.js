@@ -9,7 +9,6 @@ import {
 	XAxis,
 	Tooltip,
 	ResponsiveContainer,
-	PolarRadiusAxis,
 	PolarAngleAxis,
 	PolarGrid,
 	PieChart,
@@ -19,6 +18,18 @@ import {
 	RadarChart,
 } from "recharts";
 
+const CustomTooltipLine = ({ active, payload, label }) => {
+	if (active && payload && payload.length) {
+	  return (
+		<div className="custom-tooltip">
+		  <p className="label">{` ${payload[0].value} min`}</p>
+		</div>
+	  );
+	}
+  
+	return null;
+  };
+
 /**
  * Component for showing all graphs displayed in the second horizontal bar
  *
@@ -26,7 +37,7 @@ import {
  */
 function HorizontalSecondaryArea(props) {
 	const COLORS = ["#FF0101", "#FBFBFB", "#FFBB28", "#FF8042"];
-	console.log(props);
+	// const COLORS = ["#FF0101", "#FFBB28", "#FFBB28", "#FF8042"];
 	return (
 		<div className="horizontalsecondaryarea">
 			<SquareChartArea>
@@ -50,7 +61,7 @@ function HorizontalSecondaryArea(props) {
 								stroke="#ffffff"
 							/>
 							{/* <YAxis /> */}
-							<Tooltip />
+							<Tooltip content={<CustomTooltipLine />} />
 							{/* <Legend /> */}
 							<Line
 								type="monotone"
@@ -64,7 +75,7 @@ function HorizontalSecondaryArea(props) {
 			</SquareChartArea>
 			<SquareChartArea>
 				<div className="squarechartarea radar">
-					<ResponsiveContainer width="100%" height="100%">
+					<ResponsiveContainer width="95%" height="95%">
 						<RadarChart
 							cx="50%"
 							cy="50%"
@@ -73,7 +84,7 @@ function HorizontalSecondaryArea(props) {
 						>
 							<PolarGrid />
 							<PolarAngleAxis dataKey="type" tick={{ fill: "#FFFFFF" }} />
-							<PolarRadiusAxis angle={30} domain={[0, 150]} />
+							{/* <PolarRadiusAxis angle={30} domain={[0, 150]} /> */}
 							<Radar
 								name=""
 								dataKey="value"
@@ -101,6 +112,7 @@ function HorizontalSecondaryArea(props) {
 								cornerRadius={40}
 								paddingAngle={5}
 								dataKey="value"
+								// startAngle={0}
 							>
 								{props.score.map((entry, index) => (
 									<Cell

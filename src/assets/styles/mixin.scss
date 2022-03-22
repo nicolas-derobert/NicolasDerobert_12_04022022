@@ -31,3 +31,10 @@
 		@content;
 	}
 }
+
+//Small Device
+@mixin small-device-generic {
+	@media screen and (max-width: $breakpoint-desktop-max) {
+		@content;
+	}
+}

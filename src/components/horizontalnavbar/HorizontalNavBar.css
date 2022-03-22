@@ -1,27 +1,12 @@
 .horizontalnavbar {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 80%;
-          flex: 0 0 80%;
+  width: 100%;
   font-size: 2.4rem;
-  margin: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  margin: 0px;
 }
 
 .horizontalnavbar ul {
   padding: 0;
-  width: 100%;
+  margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,7 +19,8 @@
 }
 
 .horizontalnavbar li {
-  padding: 0px 15px;
+  padding: 0px;
+  margin: 0;
   list-style-type: none;
   white-space: nowrap;
 }

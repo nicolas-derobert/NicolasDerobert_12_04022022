@@ -15,4 +15,14 @@
   border-radius: 4px;
   gap: 2%;
 }
+
+.horizontalsecondaryarea .custom-tooltip {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 7px;
+}
+
+.horizontalsecondaryarea .custom-tooltip p {
+  padding: 2px;
+}
 /*# sourceMappingURL=HorizontalSecondaryArea.css.map */

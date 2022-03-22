@@ -39,6 +39,9 @@ padding: 10%;
         margin-left: 5%;
 		font-size: 2.4rem;
 		font-weight: 700;
+		@include small-device-generic {
+			font-size: 1.8rem;
+		}
 		.value {
 			.number {
 			}

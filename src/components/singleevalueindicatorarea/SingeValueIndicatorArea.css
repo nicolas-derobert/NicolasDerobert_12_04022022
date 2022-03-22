@@ -61,6 +61,12 @@
   font-weight: 700;
 }
 
+@media screen and (max-width: 1199.98px) {
+  .singlevalueindicatorarea .dataarea {
+    font-size: 1.8rem;
+  }
+}
+
 .singlevalueindicatorarea .dataarea .category {
   color: #74798C;
   font-size: 1.4rem;

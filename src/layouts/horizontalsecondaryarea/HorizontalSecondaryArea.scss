@@ -7,4 +7,12 @@
 	align-items: stretch;
 	border-radius: 4px;
 	gap:2%;
+	.custom-tooltip {
+		background-color: $white-color;
+		color: $black-color;
+		padding: 7px;
+		p {
+			padding: 2px;
+		}
+	}
 }

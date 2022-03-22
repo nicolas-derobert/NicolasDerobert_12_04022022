@@ -54,7 +54,7 @@ function App() {
 	 * @type {string}
 	 * @const
 	 */
-	const mockedUrlUserInfo = "datauser.json";
+	const mockedUrlUserInfo = "edatauser.json";
 	/**
 	 * - url used for api call to get activity data
 	 * @type {string}
@@ -92,46 +92,73 @@ function App() {
 	 */
 	const mockedUrlUserPerformance = "datauserperformance.json";
 
-	
 	let urlUserInfo = actualUrlUserInfo;
 	let urlUserActivity = actualUrlUserActivity;
 	let urlUserSession = actualUrlUserSession;
 	let urlUserPerformance = actualUrlUserPerformance;
 
-
 	const {
 		response: userResponse,
-		loading: userLoading,
-		error: userError,
+		loading: userLoadingResponse,
+		error: userErrorResponse,
 	} = useApi({ method: "get", url: `${urlUserInfo}` });
 
 	const {
 		response: activityResponse,
-		loading: activityLoading,
-		error: activityError,
+		loading: activityLoadingResponse,
+		error: activityErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserActivity}` });
 	const {
 		response: averageSessionsResponse,
-		loading: averageSessionsLoading,
-		error: averageSessionsError,
+		loading: averageSessionsLoadingResponse,
+		error: averageSessionsErrorResponse,
 	} = useApi({
 		method: "get",
 		url: ` ${urlUserSession}`,
 	});
 	const {
 		response: performanceResponse,
-		loading: performanceLoading,
-		error: performanceError,
+		loading: performanceLoadingResponse,
+		error: performanceErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserPerformance}` });
 	// const [data, setData] = useState([]);
+	const [userLoading, setUserLoading] = useState(true);
+	const [activityLoading, setActivityLoading] = useState(true);
+	const [averageSessionsLoading, setAverageSessionsLoading] = useState(true);
+	const [performanceLoading, setPerformanceLoading] = useState(true);
 	const [userData, setUserData] = useState([]);
 	const [activityData, setActivityData] = useState([]);
 	const [averageSessionsData, setSessionsData] = useState([]);
 	const [performanceData, setPerformanceData] = useState([]);
+	const [userError, setUserError] = useState("");
+	const [activityError, setActivityError] = useState("");
+	const [averageSessionsError, setAverageSessionsError] = useState("");
+	const [performanceError, setPerformanceError] = useState("");
 	const [userDataScore, setUserDataScore] = useState("");
 	const [userDataScoreValue, setUserDataScoreValue] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
+const[globalLoading,setGlobalLoading] =useState(false)
 
 	useEffect(() => {
+		let message = "";
+		if (userErrorResponse) {
+			message += "Les données utilisateurs ne peuvent pas être téléchargées";
+		}
+		if (activityErrorResponse) {
+			message += "Les données d'activité ne peuvent pas être téléchargées";
+		}
+		if (averageSessionsErrorResponse) {
+			message += "Les données des sessions ne peuvent pas être téléchargées";
+		}
+		if (performanceErrorResponse) {
+			message += "Les données de performance ne peuvent pas être téléchargées";
+		}
+		setUserError(userErrorResponse);
+		setActivityError(activityErrorResponse);
+		setAverageSessionsError(averageSessionsErrorResponse);
+		setPerformanceError(performanceErrorResponse);
+		setErrorMessage(message);
+
 		if (userResponse !== null) {
 			/**
 			 * - Score transformed in percent
@@ -149,6 +176,7 @@ function App() {
 				{ value: userResponse.data.score * 100 },
 				{ value: 100 - userResponse.data.score * 100 },
 			];
+			setUserLoading(userLoadingResponse);
 			setUserData(userResponse);
 			setUserDataScoreValue(userScoreResponseValue);
 			setUserDataScore(userScoreResponse);
@@ -163,6 +191,8 @@ function App() {
 			for (let i = 0; i < activityResponseFormated.length; i++) {
 				activityResponseFormated[i].dayNumber = i + 1;
 			}
+
+			setActivityLoading(activityLoadingResponse);
 			setActivityData(activityResponseFormated);
 		}
 		if (averageSessionsResponse !== null) {
@@ -183,6 +213,7 @@ function App() {
 			for (let i = 0; i < averageSessionsResponse.data.sessions.length; i++) {
 				averageSessionsResponseFormated[i].day = letterDay[i];
 			}
+			setAverageSessionsLoading(averageSessionsLoadingResponse);
 			setSessionsData(averageSessionsResponseFormated);
 		}
 		if (performanceResponse !== null) {
@@ -203,19 +234,33 @@ function App() {
 			for (var i = 0; i < performanceResponse.data.data.length; i++) {
 				performanceResponseFormated[i].type = type[i];
 			}
+			setPerformanceLoading(performanceLoadingResponse);
 			setPerformanceData(performanceResponseFormated);
 		}
+		if(!userLoadingResponse & !activityLoadingResponse & !averageSessionsLoadingResponse & !performanceLoadingResponse){setGlobalLoading(true)}
+		
 	}, [
 		userResponse,
 		activityResponse,
 		averageSessionsResponse,
 		performanceResponse,
+		userLoadingResponse,
+		activityLoadingResponse,
+		averageSessionsLoadingResponse,
+		performanceLoadingResponse,
+		userErrorResponse,
+		activityErrorResponse,
+		averageSessionsErrorResponse,
+		performanceErrorResponse,
+		globalLoading,
 	]);
 
 	return (
 		<div className="App">
 			<GlobalLayout>
-				{!userLoading && (
+				
+				
+				{ !errorMessage ? (globalLoading ?(
 					<>
 						<h1 className="titlearea">
 							{"Bonjour "}
@@ -228,7 +273,7 @@ function App() {
 						</p>
 						{!activityLoading && <HorizontalMainArea activity={activityData} />}
 
-						{!userLoading & !averageSessionsLoading ? (
+						{!userLoading & !averageSessionsLoading & !performanceLoading ? (
 							<HorizontalSecondaryArea
 								score={userDataScore}
 								scorevalue={userDataScoreValue}
@@ -240,11 +285,44 @@ function App() {
 							<VerticalArea keydata={userData.data.keyData}></VerticalArea>
 						)}
 					</>
-				)}
-				{userLoading && <div>Chargement</div>}
+				): <div className="uploading">Chargement des données</div>):<div className="error">{errorMessage}</div>}
+				{/* {userLoading && <div>Chargement</div>} */}
 			</GlobalLayout>
 		</div>
 	);
+	// return (
+	// 	<div className="App">
+	// 		<GlobalLayout>
+	// 			{!userLoading && (
+	// 				<>
+	// 					<h1 className="titlearea">
+	// 						{"Bonjour "}
+	// 						<span className="firstname">
+	// 							{userData.data.userInfos.firstName}
+	// 						</span>
+	// 					</h1>
+	// 					<p className="congratsarea">
+	// 						Félicitation ! Vous avez explosé vos objectifs hier 👏
+	// 					</p>
+	// 					{!activityLoading && <HorizontalMainArea activity={activityData} />}
+
+	// 					{!userLoading & !averageSessionsLoading & !performanceLoading ? (
+	// 						<HorizontalSecondaryArea
+	// 							score={userDataScore}
+	// 							scorevalue={userDataScoreValue}
+	// 							sessions={averageSessionsData}
+	// 							performance={performanceData}
+	// 						/>
+	// 					) : null}
+	// 					{!userLoading && (
+	// 						<VerticalArea keydata={userData.data.keyData}></VerticalArea>
+	// 					)}
+	// 				</>
+	// 			)}
+	// 			{userLoading && <div>Chargement</div>}
+	// 		</GlobalLayout>
+	// 	</div>
+	// );
 }
 
 export default App;

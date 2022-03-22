@@ -89,12 +89,31 @@
   width: 75%;
   display: -ms-grid;
   display: grid;
-  gap: 5%;
+  gap: 3%;
   -ms-grid-columns: 2fr 1fr 1fr 1fr;
       grid-template-columns: 2fr 1fr 1fr 1fr;
   -ms-grid-rows: 7.5% 7.5% 20% 20% 30%;
       grid-template-rows: 7.5% 7.5% 20% 20% 30%;
       grid-template-areas: "titlearea titlearea titlearea titlearea" "congratsarea congratsarea congratsarea congratsarea" "horizontalmainarea horizontalmainarea horizontalmainarea verticalarea" "horizontalmainarea horizontalmainarea horizontalmainarea verticalarea" "horizontalsecondaryarea horizontalsecondaryarea horizontalsecondaryarea verticalarea";
+}
+
+.globallayout main .content .uploading,
+.globallayout main .content .error {
+  padding: 10px;
+  font-size: 2rem;
+  width: 80%;
+  height: 5vh;
+  position: absolute;
+  bottom: 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.globallayout main .content .uploading {
+  background-color: rgba(74, 184, 255, 0.5);
+}
+
+.globallayout main .content .error {
+  background-color: rgba(255, 1, 1, 0.5);
 }
 
 .globallayout main .content .horizontalmainarea {
@@ -138,5 +157,12 @@
 
 .globallayout main .content .firstname {
   color: #FF0101;
+}
+
+@media screen and (max-width: 1199.98px) {
+  .globallayout main .content {
+    margin: 0 2%;
+    width: 85%;
+  }
 }
 /*# sourceMappingURL=GlobalLayout.css.map */

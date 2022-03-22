@@ -2,22 +2,25 @@
 @import "../../assets/Styles/mixin.scss";
 
 .horizontalnavbar {
-	flex: 0 0 80%;
+	// flex: 0 0 90%;
+	width: 100%;
 	font-size: 2.4rem;
-	margin: 10px;
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
-	align-items: center;
+	margin: 0px;
+	// display: flex;
+	// flex-flow: row nowrap;
+	// justify-content: space-between;
+	// align-items: center;
 	ul {
 		padding: 0;
-		width: 100%;
+		margin: 0;
+		// width: 100%;
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: space-around;
 	}
 	li {
-		padding: 0px 15px;
+		padding: 0px ;
+		margin: 0;
 		list-style-type: none;
 		white-space: nowrap;
 		a {

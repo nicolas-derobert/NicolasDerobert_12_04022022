@@ -40,7 +40,6 @@ export const useApi = ({
 	useEffect(() => {
 		fetchData();
 	}, [method, url, body, headers]);
-
 	return { response, error, loading };
 };
 

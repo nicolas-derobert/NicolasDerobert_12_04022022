@@ -156,7 +156,7 @@ HorizontalSecondaryArea.propTypes = {
 	/**
 	 * Array with two values.  (prop) The first value is initial value of score. The second value is the result of subtraction of the to the number of 100
 	 */
-	score: PropTypes.arrayOf(PropTypes.number),
+	score: PropTypes.arrayOf(PropTypes.object),
 	/**
 	 * First value is initial value of score  (prop)
 	 */

@@ -16,14 +16,14 @@ export const useApi = ({
 	url,
 	method,
 	body = null,
-	headers = JSON.stringify({ accept: "*/*" }),
+	headers = null,
 }) => {
 	const [response, setResponse] = useState(null);
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(true);
 
-	const fetchData = () => {
-		axios[method](url, JSON.parse(headers), JSON.parse(body))
+	const fetchData = async () => {
+		await axios[method](url, JSON.parse(headers), JSON.parse(body))
 			.then((res) => {
 				setResponse(res.data);
 			})

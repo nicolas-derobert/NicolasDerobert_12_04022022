@@ -5,7 +5,7 @@ import HorizontalMainArea from "./layouts/horizontalmainarea/HorizontalMainArea"
 import HorizontalSecondaryArea from "./layouts/horizontalsecondaryarea/HorizontalSecondaryArea";
 import VerticalArea from "./layouts/verticalarrea/VerticalArea";
 import { useState, useEffect } from "react";
-import { useApi } from "./hooks/use-api";
+import { useApi } from "./service/use-api";
 import "./App.css";
 /**
  * Component for showing navigation buttons
@@ -118,33 +118,33 @@ function App() {
 	let urlUserPerformance = actualUrlUserPerformance;
 
 	/**
- * @typedef {object} DestructuredObjectApiResponseForUser
- * @property {string} userResponse
- * @property {boolean} userLoadingResponse
- * @property {string} userErrorResponse
- */
+	 * @typedef {object} DestructuredObjectApiResponseForUser
+	 * @property {string} userResponse
+	 * @property {boolean} userLoadingResponse
+	 * @property {string} userErrorResponse
+	 */
 	const {
 		response: userResponse,
 		loading: userLoadingResponse,
 		error: userErrorResponse,
 	} = useApi({ method: "get", url: `${urlUserInfo}` });
 	/**
- * @typedef {object} DestructuredObjectApiResponseForActivity
- * @property {string} activityResponse
- * @property {boolean} activityLoadingResponse
- * @property {string} activityErrorResponse
- */
+	 * @typedef {object} DestructuredObjectApiResponseForActivity
+	 * @property {string} activityResponse
+	 * @property {boolean} activityLoadingResponse
+	 * @property {string} activityErrorResponse
+	 */
 	const {
 		response: activityResponse,
 		loading: activityLoadingResponse,
 		error: activityErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserActivity}` });
-		/**
- * @typedef {object} DestructuredObjectApiResponseForSession
- * @property {string} averageSessionsResponse
- * @property {boolean} averageSessionsLoadingResponse
- * @property {string} averageSessionsErrorResponse
- */
+	/**
+	 * @typedef {object} DestructuredObjectApiResponseForSession
+	 * @property {string} averageSessionsResponse
+	 * @property {boolean} averageSessionsLoadingResponse
+	 * @property {string} averageSessionsErrorResponse
+	 */
 	const {
 		response: averageSessionsResponse,
 		loading: averageSessionsLoadingResponse,
@@ -153,12 +153,12 @@ function App() {
 		method: "get",
 		url: ` ${urlUserSession}`,
 	});
-		/**
- * @typedef {object} DestructuredObjectApiResponseForPerformance
- * @property {string} performanceResponse
- * @property {boolean} performanceLoadingResponse
- * @property {string} performanceErrorResponse
- */
+	/**
+	 * @typedef {object} DestructuredObjectApiResponseForPerformance
+	 * @property {string} performanceResponse
+	 * @property {boolean} performanceLoadingResponse
+	 * @property {string} performanceErrorResponse
+	 */
 	const {
 		response: performanceResponse,
 		loading: performanceLoadingResponse,
@@ -318,21 +318,17 @@ function App() {
 							<p className="congratsarea">
 								Félicitation ! Vous avez explosé vos objectifs hier 👏
 							</p>
-							{!activityLoading && (
-								<HorizontalMainArea activity={activityData} />
-							)}
 
-							{!userLoading & !averageSessionsLoading & !performanceLoading ? (
-								<HorizontalSecondaryArea
-									score={userDataScore}
-									scorevalue={userDataScoreValue}
-									sessions={averageSessionsData}
-									performance={performanceData}
-								/>
-							) : null}
-							{!userLoading && (
-								<VerticalArea keydata={userData.data.keyData}></VerticalArea>
-							)}
+							<HorizontalMainArea activity={activityData} />
+
+							<HorizontalSecondaryArea
+								score={userDataScore}
+								scorevalue={userDataScoreValue}
+								sessions={averageSessionsData}
+								performance={performanceData}
+							/>
+
+							<VerticalArea keydata={userData.data.keyData}></VerticalArea>
 						</>
 					) : (
 						<div className="uploading">Chargement des données</div>

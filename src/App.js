@@ -164,18 +164,10 @@ function App() {
 		loading: performanceLoadingResponse,
 		error: performanceErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserPerformance}` });
-	const [userLoading, setUserLoading] = useState(true);
-	const [activityLoading, setActivityLoading] = useState(true);
-	const [averageSessionsLoading, setAverageSessionsLoading] = useState(true);
-	const [performanceLoading, setPerformanceLoading] = useState(true);
 	const [userData, setUserData] = useState([]);
 	const [activityData, setActivityData] = useState([]);
 	const [averageSessionsData, setSessionsData] = useState([]);
 	const [performanceData, setPerformanceData] = useState([]);
-	const [userError, setUserError] = useState("");
-	const [activityError, setActivityError] = useState("");
-	const [averageSessionsError, setAverageSessionsError] = useState("");
-	const [performanceError, setPerformanceError] = useState("");
 	const [userDataScore, setUserDataScore] = useState("");
 	const [userDataScoreValue, setUserDataScoreValue] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -195,10 +187,6 @@ function App() {
 		if (performanceErrorResponse) {
 			message += "Les données de performance ne peuvent pas être téléchargées";
 		}
-		setUserError(userErrorResponse);
-		setActivityError(activityErrorResponse);
-		setAverageSessionsError(averageSessionsErrorResponse);
-		setPerformanceError(performanceErrorResponse);
 		setErrorMessage(message);
 
 		if (userResponse !== null) {
@@ -218,7 +206,6 @@ function App() {
 				{ value: userResponse.data.score * 100 },
 				{ value: 100 - userResponse.data.score * 100 },
 			];
-			setUserLoading(userLoadingResponse);
 			setUserData(userResponse);
 			setUserDataScoreValue(userScoreResponseValue);
 			setUserDataScore(userScoreResponse);
@@ -234,7 +221,6 @@ function App() {
 				activityResponseFormated[i].dayNumber = i + 1;
 			}
 
-			setActivityLoading(activityLoadingResponse);
 			setActivityData(activityResponseFormated);
 		}
 		if (averageSessionsResponse !== null) {
@@ -255,7 +241,6 @@ function App() {
 			for (let i = 0; i < averageSessionsResponse.data.sessions.length; i++) {
 				averageSessionsResponseFormated[i].day = letterDay[i];
 			}
-			setAverageSessionsLoading(averageSessionsLoadingResponse);
 			setSessionsData(averageSessionsResponseFormated);
 		}
 		if (performanceResponse !== null) {
@@ -276,7 +261,6 @@ function App() {
 			for (var i = 0; i < performanceResponse.data.data.length; i++) {
 				performanceResponseFormated[i].type = type[i];
 			}
-			setPerformanceLoading(performanceLoadingResponse);
 			setPerformanceData(performanceResponseFormated);
 		}
 		if (

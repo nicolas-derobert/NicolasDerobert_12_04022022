@@ -13,7 +13,7 @@ import {
 
 /**
  * Function to customize Recharts Tooltip
- * @category Recharts customization
+ * @category RechartsCustomization
  * @function CustomTooltip
  * @param {Object} Obj Object that contain parameters that customize Tooltip
  * @param {boolean} Obj.active If set true, the tooltip is displayed

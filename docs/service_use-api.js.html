@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sportsee Project Documentaion layouts/verticalarrea/VerticalArea.js</title>
+  <title>Sportsee Project Documentaion service/use-api.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -84,7 +84,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>layouts/verticalarrea/VerticalArea.js</h1>
+                    <h1>service/use-api.js</h1>
                 </header>
                 
 
@@ -93,82 +93,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import SingeValueIndicatorArea from "../../components/singleevalueindicatorarea/SingeValueIndicatorArea";
-import "./VerticalArea.css";
-import calorieLogo from "../../assets/images/calorie.svg";
-import proteinLogo from "../../assets/images/protein.svg";
-import carbohydrateLogo from "../../assets/images/carbohydrate.svg";
-import lipidLogo from "../../assets/images/lipid.svg";
-import PropTypes from "prop-types";
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from "react";
+import axios from "axios";
+	
 /**
- * Component for showing navigation buttons
- *
- * @component
+ * Generic function for api call to real api and mocked api
+ * @category API
+ * @function useApi
+ * @param {Object} Obj description
+ * @param {string} Obj.url url of api call
+ * @param {string} Obj.method method 
+ * @param {string} Obj.body body of call
+ * @param {string} Obj.headers headers of call
+ * @returns {Object}
  */
+export const useApi = ({
+	url,
+	method,
+	body = null,
+	headers = JSON.stringify({ accept: "*/*" }),
+}) => {
+	const [response, setResponse] = useState(null);
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(true);
 
-function VerticalArea(props) {
-	return (
-		&lt;div className="verticalarea">
-			&lt;SingeValueIndicatorArea
-				number={props.keydata.calorieCount}
-				unit="Kcal"
-				category="Calories"
-				svg={calorieLogo}
-				cssClass="calorie"
-			/>
-			&lt;SingeValueIndicatorArea
-				number={props.keydata.proteinCount}
-				unit="g"
-				category="Proteines"
-				svg={proteinLogo}
-				cssClass="protein"
-			/>
-			&lt;SingeValueIndicatorArea
-				number={props.keydata.carbohydrateCount}
-				unit="g"
-				category="Glucides"
-				svg={carbohydrateLogo}
-				cssClass="carbohydrate"
-			/>
-			&lt;SingeValueIndicatorArea
-				number={props.keydata.lipidCount}
-				unit="g"
-				category="Lipides"
-				svg={lipidLogo}
-				cssClass="lipid"
-			/>
-		&lt;/div>
-	);
-}
+	const fetchData = () => {
+		axios[method](url, JSON.parse(headers), JSON.parse(body))
+			.then((res) => {
+				setResponse(res.data);
+			})
+			.catch((err) => {
+				setError(err);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	};
 
-VerticalArea.propTypes = {
-	/**
-	 * Values required to fill single value indicators
-	 */
-	keydata: PropTypes.shape({
-		/**
-		 * Calorie value (prop)
-		 * @static
-		 */
-		calorieCount: PropTypes.any.isRequired,
-		/**
-		 *  Glucide value (prop)
-		 */
-		carbohydrateCount: PropTypes.any.isRequired,
-		/**
-		 * Lipid value (prop)
-		 */
-		lipidCount: PropTypes.any.isRequired,
-		/**
-		 * protein value (prop)
-		 */
-		proteinCount: PropTypes.any.isRequired,
-	}),
-};
-
-export default VerticalArea;
-</code></pre>
+	useEffect(() => {
+		fetchData();
+	}, [method, url, body, headers]);
+	return { response, error, loading };
+};</code></pre>
         </article>
     </section>
 

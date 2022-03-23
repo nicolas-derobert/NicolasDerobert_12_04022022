@@ -76,7 +76,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="App.html">App</a></li><li><a href="Footer.html">Footer</a></li><li><a href="GlobalLayout.html">GlobalLayout</a></li><li><a href="Header.html">Header</a></li><li><a href="HorizontalMainArea.html">HorizontalMainArea</a></li><li><a href="HorizontalSecondaryArea.html">HorizontalSecondaryArea</a></li><li><a href="NavButton.html">NavButton</a></li><li><a href="SingeValueIndicatorArea.html">SingeValueIndicatorArea</a></li><li><a href="SquareChartArea.html">SquareChartArea</a></li><li><a href="VerticalArea.html">VerticalArea</a></li></ul><h3>Global</h3><ul><li><a href="global.html#calorieCount">calorieCount</a></li><li><a href="global.html#calories">calories</a></li><li><a href="global.html#carbohydrateCount">carbohydrateCount</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#dayNumber">dayNumber</a></li><li><a href="global.html#kilogram">kilogram</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#lipidCount">lipidCount</a></li><li><a href="global.html#proteinCount">proteinCount</a></li><li><a href="global.html#sessionLength">sessionLength</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#value">value</a></li></ul></div><div class="category"><h2>API</h2><h3>Global</h3><ul><li><a href="global.html#useApi">useApi</a></li></ul></div><div class="category"><h2>Recharts customization</h2><h3>Global</h3><ul><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#CustomTooltipLine">CustomTooltipLine</a></li><li><a href="global.html#renderLegend">renderLegend</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="App.html">App</a></li><li><a href="Footer.html">Footer</a></li><li><a href="GlobalLayout.html">GlobalLayout</a></li><li><a href="Header.html">Header</a></li><li><a href="HorizontalMainArea.html">HorizontalMainArea</a></li><li><a href="HorizontalSecondaryArea.html">HorizontalSecondaryArea</a></li><li><a href="NavButton.html">NavButton</a></li><li><a href="SingeValueIndicatorArea.html">SingeValueIndicatorArea</a></li><li><a href="SquareChartArea.html">SquareChartArea</a></li><li><a href="VerticalArea.html">VerticalArea</a></li></ul><h3>Global</h3><ul><li><a href="global.html#calorieCount">calorieCount</a></li><li><a href="global.html#calories">calories</a></li><li><a href="global.html#carbohydrateCount">carbohydrateCount</a></li><li><a href="global.html#day">day</a></li><li><a href="global.html#dayNumber">dayNumber</a></li><li><a href="global.html#kilogram">kilogram</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#lipidCount">lipidCount</a></li><li><a href="global.html#proteinCount">proteinCount</a></li><li><a href="global.html#sessionLength">sessionLength</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#value">value</a></li></ul></div><div class="category"><h2>API</h2><h3>Global</h3><ul><li><a href="global.html#useApi">useApi</a></li></ul></div><div class="category"><h2>Recharts customization</h2><h3>Global</h3><ul><li><a href="global.html#CustomTooltipLine">CustomTooltipLine</a></li><li><a href="global.html#renderLegend">renderLegend</a></li></ul></div><div class="category"><h2>RechartsCustomization</h2><h3>Global</h3><ul><li><a href="global.html#CustomTooltip">CustomTooltip</a></li></ul></div>
                 
             </nav>
         </div>
@@ -100,7 +100,7 @@ import HorizontalMainArea from "./layouts/horizontalmainarea/HorizontalMainArea"
 import HorizontalSecondaryArea from "./layouts/horizontalsecondaryarea/HorizontalSecondaryArea";
 import VerticalArea from "./layouts/verticalarrea/VerticalArea";
 import { useState, useEffect } from "react";
-import { useApi } from "./hooks/use-api";
+import { useApi } from "./service/use-api";
 import "./App.css";
 /**
  * Component for showing navigation buttons
@@ -189,57 +189,57 @@ function App() {
 	/**
 	 * - variable to set actual url or mocked url for user info
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserInfo = actualUrlUserInfo;
+	const urlUserInfo = actualUrlUserInfo;
 	/**
 	 * - variable to set actual url or mocked url for activity
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserActivity = actualUrlUserActivity;
+	const urlUserActivity = actualUrlUserActivity;
 
 	/**
 	 * - variable to set actual url or mocked url for sessions
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserSession = actualUrlUserSession;
+	const urlUserSession = actualUrlUserSession;
 	/**
 	 * - variable to set actual url or mocked url for performance
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserPerformance = actualUrlUserPerformance;
+	const urlUserPerformance = actualUrlUserPerformance;
 
 	/**
- * @typedef {object} DestructuredObjectApiResponseForUser
- * @property {string} userResponse
- * @property {boolean} userLoadingResponse
- * @property {string} userErrorResponse
- */
+	 * @typedef {object} DestructuredObjectApiResponseForUser
+	 * @property {string} userResponse
+	 * @property {boolean} userLoadingResponse
+	 * @property {string} userErrorResponse
+	 */
 	const {
 		response: userResponse,
 		loading: userLoadingResponse,
 		error: userErrorResponse,
 	} = useApi({ method: "get", url: `${urlUserInfo}` });
 	/**
- * @typedef {object} DestructuredObjectApiResponseForActivity
- * @property {string} activityResponse
- * @property {boolean} activityLoadingResponse
- * @property {string} activityErrorResponse
- */
+	 * @typedef {object} DestructuredObjectApiResponseForActivity
+	 * @property {string} activityResponse
+	 * @property {boolean} activityLoadingResponse
+	 * @property {string} activityErrorResponse
+	 */
 	const {
 		response: activityResponse,
 		loading: activityLoadingResponse,
 		error: activityErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserActivity}` });
-		/**
- * @typedef {object} DestructuredObjectApiResponseForSession
- * @property {string} averageSessionsResponse
- * @property {boolean} averageSessionsLoadingResponse
- * @property {string} averageSessionsErrorResponse
- */
+	/**
+	 * @typedef {object} DestructuredObjectApiResponseForSession
+	 * @property {string} averageSessionsResponse
+	 * @property {boolean} averageSessionsLoadingResponse
+	 * @property {string} averageSessionsErrorResponse
+	 */
 	const {
 		response: averageSessionsResponse,
 		loading: averageSessionsLoadingResponse,
@@ -248,29 +248,21 @@ function App() {
 		method: "get",
 		url: ` ${urlUserSession}`,
 	});
-		/**
- * @typedef {object} DestructuredObjectApiResponseForPerformance
- * @property {string} performanceResponse
- * @property {boolean} performanceLoadingResponse
- * @property {string} performanceErrorResponse
- */
+	/**
+	 * @typedef {object} DestructuredObjectApiResponseForPerformance
+	 * @property {string} performanceResponse
+	 * @property {boolean} performanceLoadingResponse
+	 * @property {string} performanceErrorResponse
+	 */
 	const {
 		response: performanceResponse,
 		loading: performanceLoadingResponse,
 		error: performanceErrorResponse,
 	} = useApi({ method: "get", url: ` ${urlUserPerformance}` });
-	const [userLoading, setUserLoading] = useState(true);
-	const [activityLoading, setActivityLoading] = useState(true);
-	const [averageSessionsLoading, setAverageSessionsLoading] = useState(true);
-	const [performanceLoading, setPerformanceLoading] = useState(true);
 	const [userData, setUserData] = useState([]);
 	const [activityData, setActivityData] = useState([]);
 	const [averageSessionsData, setSessionsData] = useState([]);
 	const [performanceData, setPerformanceData] = useState([]);
-	const [userError, setUserError] = useState("");
-	const [activityError, setActivityError] = useState("");
-	const [averageSessionsError, setAverageSessionsError] = useState("");
-	const [performanceError, setPerformanceError] = useState("");
 	const [userDataScore, setUserDataScore] = useState("");
 	const [userDataScoreValue, setUserDataScoreValue] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -290,10 +282,6 @@ function App() {
 		if (performanceErrorResponse) {
 			message += "Les données de performance ne peuvent pas être téléchargées";
 		}
-		setUserError(userErrorResponse);
-		setActivityError(activityErrorResponse);
-		setAverageSessionsError(averageSessionsErrorResponse);
-		setPerformanceError(performanceErrorResponse);
 		setErrorMessage(message);
 
 		if (userResponse !== null) {
@@ -313,7 +301,6 @@ function App() {
 				{ value: userResponse.data.score * 100 },
 				{ value: 100 - userResponse.data.score * 100 },
 			];
-			setUserLoading(userLoadingResponse);
 			setUserData(userResponse);
 			setUserDataScoreValue(userScoreResponseValue);
 			setUserDataScore(userScoreResponse);
@@ -329,7 +316,6 @@ function App() {
 				activityResponseFormated[i].dayNumber = i + 1;
 			}
 
-			setActivityLoading(activityLoadingResponse);
 			setActivityData(activityResponseFormated);
 		}
 		if (averageSessionsResponse !== null) {
@@ -350,7 +336,6 @@ function App() {
 			for (let i = 0; i &lt; averageSessionsResponse.data.sessions.length; i++) {
 				averageSessionsResponseFormated[i].day = letterDay[i];
 			}
-			setAverageSessionsLoading(averageSessionsLoadingResponse);
 			setSessionsData(averageSessionsResponseFormated);
 		}
 		if (performanceResponse !== null) {
@@ -371,7 +356,6 @@ function App() {
 			for (var i = 0; i &lt; performanceResponse.data.data.length; i++) {
 				performanceResponseFormated[i].type = type[i];
 			}
-			setPerformanceLoading(performanceLoadingResponse);
 			setPerformanceData(performanceResponseFormated);
 		}
 		if (
@@ -413,21 +397,17 @@ function App() {
 							&lt;p className="congratsarea">
 								Félicitation ! Vous avez explosé vos objectifs hier 👏
 							&lt;/p>
-							{!activityLoading &amp;&amp; (
-								&lt;HorizontalMainArea activity={activityData} />
-							)}
 
-							{!userLoading &amp; !averageSessionsLoading &amp; !performanceLoading ? (
-								&lt;HorizontalSecondaryArea
-									score={userDataScore}
-									scorevalue={userDataScoreValue}
-									sessions={averageSessionsData}
-									performance={performanceData}
-								/>
-							) : null}
-							{!userLoading &amp;&amp; (
-								&lt;VerticalArea keydata={userData.data.keyData}>&lt;/VerticalArea>
-							)}
+							&lt;HorizontalMainArea activity={activityData} />
+
+							&lt;HorizontalSecondaryArea
+								score={userDataScore}
+								scorevalue={userDataScoreValue}
+								sessions={averageSessionsData}
+								performance={performanceData}
+							/>
+
+							&lt;VerticalArea keydata={userData.data.keyData}>&lt;/VerticalArea>
 						&lt;/>
 					) : (
 						&lt;div className="uploading">Chargement des données&lt;/div>

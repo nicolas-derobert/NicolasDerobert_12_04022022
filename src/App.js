@@ -94,28 +94,28 @@ function App() {
 	/**
 	 * - variable to set actual url or mocked url for user info
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserInfo = actualUrlUserInfo;
+	const urlUserInfo = actualUrlUserInfo;
 	/**
 	 * - variable to set actual url or mocked url for activity
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserActivity = actualUrlUserActivity;
+	const urlUserActivity = actualUrlUserActivity;
 
 	/**
 	 * - variable to set actual url or mocked url for sessions
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserSession = actualUrlUserSession;
+	const urlUserSession = actualUrlUserSession;
 	/**
 	 * - variable to set actual url or mocked url for performance
 	 * @type {string}
-	 * @var
+	 * @const
 	 */
-	let urlUserPerformance = actualUrlUserPerformance;
+	const urlUserPerformance = actualUrlUserPerformance;
 
 	/**
 	 * @typedef {object} DestructuredObjectApiResponseForUser

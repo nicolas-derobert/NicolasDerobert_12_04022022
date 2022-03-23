@@ -10,6 +10,8 @@ Please note that Sportsee is a React project.
 ## Plateform
 - NodeJS (**version 16.4**)
 - npm
+
+
 ## Dependancies
     "axios": "^0.26.0",
     "prop-types": "^15.8.1",

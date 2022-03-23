@@ -271,20 +271,14 @@ function App() {
 		) {
 			setGlobalLoading(true);
 		}
-	}, [
-		userResponse,
-		activityResponse,
-		averageSessionsResponse,
-		performanceResponse,
+		console.log(performanceData)
+	},
+			// eslint-disable-next-line react-hooks/exhaustive-deps 
+	[		
 		userLoadingResponse,
 		activityLoadingResponse,
 		averageSessionsLoadingResponse,
 		performanceLoadingResponse,
-		userErrorResponse,
-		activityErrorResponse,
-		averageSessionsErrorResponse,
-		performanceErrorResponse,
-		globalLoading,
 	]);
 
 	return (

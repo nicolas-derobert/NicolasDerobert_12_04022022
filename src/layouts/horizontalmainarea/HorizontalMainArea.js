@@ -63,14 +63,13 @@ function HorizontalMainArea(props) {
 					data={props.activity}
 					margin={{
 						top: 0,
-						right: 30,
+						right: 20,
 						left: 20,
 						bottom: 5,
 					}}
 					barSize={7}
-					fill="#FF0101"
 				>
-					<CartesianGrid strokeDasharray="3 3" />
+					<CartesianGrid strokeDasharray="3 3"  verticalPoints={[0]}/>
 					<XAxis
 						dataKey="dayNumber"
 						style={{
@@ -89,8 +88,6 @@ function HorizontalMainArea(props) {
 					<Bar
 						name="Poids (Kg)"
 						dataKey="kilogram"
-						fill="#000000"
-						minPointSize={5}
 						radius={[3, 3, 0, 0]}
 					></Bar>
 					<Bar

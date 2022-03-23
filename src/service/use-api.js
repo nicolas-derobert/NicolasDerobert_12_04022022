@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 	
@@ -37,6 +38,7 @@ export const useApi = ({
 
 	useEffect(() => {
 		fetchData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [method, url, body, headers]);
 	return { response, error, loading };
 };

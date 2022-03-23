@@ -89,7 +89,6 @@ function HorizontalSecondaryArea(props) {
 							<PolarGrid radialLines={false} />
 							<PolarAngleAxis dataKey="type" tick={{ fill: "#FFFFFF" }} />
 							<Radar
-								name=""
 								dataKey="value"
 								stroke="#FF0101"
 								fill="#FF0101"

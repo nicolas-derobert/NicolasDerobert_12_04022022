@@ -16,7 +16,7 @@ function GlobalLayout(props) {
 				<main>
 					<aside>
 						<VerticalNavBar></VerticalNavBar>
-						<div className="copyright"><p>	Copyright, SportSee 2020</p></div>
+						<div className="copyright"><p>Copyright, SportSee 2020</p></div>
 					</aside>
 					<section className="content">{props.children}</section>
 				</main>

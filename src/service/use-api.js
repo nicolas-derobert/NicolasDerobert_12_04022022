@@ -23,8 +23,8 @@ export const useApi = ({
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(true);
 
-	const fetchData = async () => {
-		await axios[method](url, JSON.parse(headers), JSON.parse(body))
+	const fetchData =  () => {
+		 axios[method](url, JSON.parse(headers), JSON.parse(body))
 			.then((res) => {
 				setResponse(res.data);
 			})

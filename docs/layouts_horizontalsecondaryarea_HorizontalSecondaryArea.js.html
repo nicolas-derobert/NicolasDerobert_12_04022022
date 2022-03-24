@@ -184,7 +184,6 @@ function HorizontalSecondaryArea(props) {
 							&lt;PolarGrid radialLines={false} />
 							&lt;PolarAngleAxis dataKey="type" tick={{ fill: "#FFFFFF" }} />
 							&lt;Radar
-								name=""
 								dataKey="value"
 								stroke="#FF0101"
 								fill="#FF0101"
@@ -251,7 +250,7 @@ HorizontalSecondaryArea.propTypes = {
 	/**
 	 * Array with two values.  (prop) The first value is initial value of score. The second value is the result of subtraction of the to the number of 100
 	 */
-	score: PropTypes.arrayOf(PropTypes.number),
+	score: PropTypes.arrayOf(PropTypes.object),
 	/**
 	 * First value is initial value of score  (prop)
 	 */
